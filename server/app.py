@@ -1,14 +1,19 @@
-from flask import Flask, render_template, request
-app = Flask(__name__)
+from flask import Flask, send_from_directory
+from flask_restful import Api, Resource, reqparse
+from flask_cors import CORS #comment this on deployment
+# from api.HelloApiHandler import HelloApiHandler
 
-@app.route('/<string:name>')
-def greet(name):
-    return f'Hello {name}'
+app = Flask(__name__, static_url_path='', static_folder='../dist')
+CORS(app) #comment this on deployment
+api = Api(app)
 
-@app.route('/')
-def hello_world():
-    request_method = request.method
-    return render_template('index.html', request_method=request_method)
+@app.route("/", defaults={'path':''})
+def serve(path):
+    return send_from_directory(app.static_folder,'index.html')
+
+@app.route("/login")
+def login():
+    return 'login'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
