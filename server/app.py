@@ -13,7 +13,7 @@ def serve(path):
 
 @app.route("/login")
 def login():
-    return 'login'
+    return 'hello from the flask server'
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
