@@ -1,12 +1,10 @@
 import { AnyAction } from "redux";
 
 
-interface iState {
-    isLoggedIn: boolean
-}
 
-const initalState:iState = {
-    isLoggedIn: false
+const initalState = {
+    isLoggedIn: false,
+    logger: 'eric'
 }
 
 export default function reducer (state = initalState, action:AnyAction) {
