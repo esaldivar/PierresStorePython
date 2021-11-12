@@ -6,7 +6,7 @@ export const App= () => {
   const [getMessage, setGetMessage] = useState<any>('')
   
   useEffect(():any=>{
-    axios.get('http://localhost:5000/login').then((response) => {
+    axios.get('/login').then((response) => {
       console.log("SUCCESS", response)
       setGetMessage(response.data)
     }).catch(error => {
