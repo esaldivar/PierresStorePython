@@ -45,9 +45,14 @@ def graphql_server():
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
 
-@app.route("/login")
+@app.route("/login", endpoint='login')
 def login():
     return 'hello from the flask booiii'
+
+@app.route("/backendtest", endpoint='backendtest')
+def login():
+    return 'You got this Eric'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
