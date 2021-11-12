@@ -6,7 +6,7 @@ module.exports = {
   entry: './client/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './dist'),
     clean: true,
   },
   devtool: 'inline-source-map',
@@ -41,6 +41,9 @@ module.exports = {
   },
   devServer: {
 		historyApiFallback: true,
-    hot: true,	
+    hot: true,
+    proxy: {
+      '/': 'http://localhost:5000'
+    }
 	  },
 };
