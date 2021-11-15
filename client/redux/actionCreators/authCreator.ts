@@ -1,15 +1,15 @@
-export const logIn = () => {
+export const add = () => {
     return (dispatch:any) => {
         dispatch({
-            type: 'LOGIN'
+            type: 'ADD'
         });
     };
 };
 
-export const logOut = () => {
+export const reset = () => {
     return (dispatch:any) => {
         dispatch({
-            type: 'LOGOUT'
+            type: 'RESET'
         });
     };
 };

@@ -1,24 +1,26 @@
 import { AnyAction } from "redux";
 
 
+interface reduxTest {
+    count: number
+}
 
-const initalState = {
-    isLoggedIn: false,
-    logger: 'eric'
+const initalState:reduxTest = {
+    count: 0
 }
 
 export default function reducer (state = initalState, action:AnyAction) {
     switch (action.type) {
-        case 'LOGIN' : {
+        case 'ADD' : {
             return {
                 ...state,
-                isLoggedIn: true
+                count: state.count + 1
             };
         };
-        case 'LOGOUT' : {
+        case 'RESET' : {
             return {
                 ...state,
-                isLoggedIn: false
+                count: 0
             };
         };
         default:
