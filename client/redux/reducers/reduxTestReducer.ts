@@ -6,7 +6,7 @@ interface reduxTest {
 }
 
 const initalState:reduxTest = {
-    count: 0
+    count: 0  
 }
 
 export default function reducer (state = initalState, action:AnyAction) {
@@ -17,6 +17,14 @@ export default function reducer (state = initalState, action:AnyAction) {
                 count: state.count + 1
             };
         };
+
+        case 'SUBTRACT' : {
+            return {
+                ...state,
+                count: state.count -1
+            }
+        };
+
         case 'RESET' : {
             return {
                 ...state,

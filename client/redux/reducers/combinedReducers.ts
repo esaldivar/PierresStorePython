@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import authReducer from './reduxTestReducer';
+import reduxTestReducer from './reduxTestReducer';
 
 // creates a store of reducers
 const reducers = combineReducers({
-    auth: authReducer,
+    reduxTest: reduxTestReducer,
 });
 
 
