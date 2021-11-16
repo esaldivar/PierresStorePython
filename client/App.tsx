@@ -20,8 +20,6 @@ export const App = () => {
       });
   }, []);
 
-
-
   return (
     <div className="flex flex-col m-auto">
       <Provider store={store}>
