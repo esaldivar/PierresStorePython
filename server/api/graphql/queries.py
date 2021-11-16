@@ -1,4 +1,4 @@
-from .models import Todo
+from api.database.models import Todo
 from ariadne import convert_kwargs_to_snake_case
 
 
