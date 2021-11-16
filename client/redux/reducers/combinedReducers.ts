@@ -3,8 +3,7 @@ import reduxTestReducer from './reduxTestReducer';
 
 // creates a store of reducers
 const reducers = combineReducers({
-    reduxTest: reduxTestReducer,
+  reduxTest: reduxTestReducer,
 });
-
 
 export default reducers;
