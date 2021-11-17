@@ -7,7 +7,7 @@
     "dev": "webpack serve --echo \"Error: no test specified\" && exit 1open",
     "format": "prettier --write \"./client/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "eslint --fix \"./client/**/*.{js,jsx,ts,tsx,json}\"",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
