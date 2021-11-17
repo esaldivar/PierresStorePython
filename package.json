@@ -7,18 +7,13 @@
     "dev": "webpack serve --echo \"Error: no test specified\" && exit 1open",
     "format": "prettier --write \"./client/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "eslint --fix \"./client/**/*.{js,jsx,ts,tsx,json}\"",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "prepare": "husky install"
   },
-  "husky": {
-    "hooks":{
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged":{
-    "*.js": ["eslint --fix", "git add"],
-    "*.ts": ["eslint --fix", "git add"],
-    "*.jsx": ["eslint --fix", "git add"],
-    "*.tsx": ["eslint --fix", "git add"],
+  "lint-staged": {
+    "./client/**/*.{js,jsx,ts,tsx,json}": [
+      "npm run lint"
+    ]
   },
   "repository": {
     "type": "git",
@@ -53,7 +48,7 @@
     "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "^7.0.4",
+    "husky": "^7.0.0",
     "jest": "^27.3.1",
     "lint-staged": "^12.0.2",
     "postcss": "^8.3.11",
