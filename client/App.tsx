@@ -8,6 +8,8 @@ import { ReduxTester } from './views/reduxTest';
 export const App = () => {
   const [getMessage, setGetMessage] = useState<any>('');
 
+  const apple = "adjfkasfjlasdf"
+  
   useEffect((): void => {
     axios
       .get('/login')
