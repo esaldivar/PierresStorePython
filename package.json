@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "mock store based off of Pierre's Store from Stardew Valley",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "webpack serve --open",
+    "dev": "webpack serve --echo \"Error: no test specified\" && exit 1open",
     "format": "prettier --write \"./client/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "lint": "eslint --fix \"./client/**/*.{js,jsx,ts,tsx,json}\""
+    "lint": "eslint --fix \"./client/**/*.{js,jsx,ts,tsx,json}\"",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.3.1",
     "postcss": "^8.3.11",
     "postcss-loader": "^6.2.0",
     "prettier": "^2.4.1",
