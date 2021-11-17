@@ -23,8 +23,7 @@ module.exports = {
 	  'plugin:prettier/recommended',
 	],
 	rules: {
-	  'no-unused-vars': 'off',
-	  '@typescript-eslint/no-unused-vars': ['error'],
+	  '@typescript-eslint/no-unused-vars': 1,
 	  '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
 	  'react/prop-types': 'off',
