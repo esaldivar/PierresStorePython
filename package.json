@@ -10,6 +10,11 @@
     "test": "jest --verbose",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks":{
+      "pre-commit": "lint-staged"
+    } 
+  },
   "lint-staged": {
     "./client/**/*.{js,jsx,ts,tsx,json}": [
       "npm run lint"
