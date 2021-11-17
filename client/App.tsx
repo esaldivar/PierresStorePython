@@ -25,8 +25,8 @@ export const App = () => {
       <Provider store={store}>
         <h1 className="text-blue-600">Hello from Auroraa</h1>
         <p className="text-red-600">{getMessage}</p>
-        <ReduxTester />
-        <Login />
+                 <ReduxTester />
+               <Login />
       </Provider>
     </div>
   );
