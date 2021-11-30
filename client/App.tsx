@@ -6,8 +6,8 @@ import { Login } from './views/login';
 import { ReduxTester } from './views/reduxTest';
 
 export const App = () => {
-  const [getMessage, setGetMessage] = useState<any>('');
-  const [graphqlData, getGraphqlData] = useState<any>([]);
+  const [getMessage, setGetMessage] = useState<string>('');
+  const [graphqlData, getGraphqlData] = useState<string[]>([]);
 
   useEffect((): void => {
     axios
@@ -25,7 +25,7 @@ export const App = () => {
     graphQLTestFunc();
   }, []);
 
-  const graphQLTestFunc = () => {
+  const graphQLTestFunc = (): void => {
     axios
       .post('/graphql', {
         query: `query 

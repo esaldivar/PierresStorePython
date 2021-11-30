@@ -22,9 +22,34 @@ type TodosResult {
     todos: [Todo]
 }
 
+type Product {
+    id: ID!
+    productName: String!
+    imageUrl: String!
+    price: Int!
+    information: String!
+    season: [String]
+    category: [String]!
+    quantity: String!
+}
+
+type ProductResult {
+    success: Boolean!
+    errors: [String]
+    product: Product
+}
+
+type ProductsResult {
+    success: Boolean!
+    errors: [String]
+    products: [Product]
+}
+
 type Query {
     todos: TodosResult!
     todo(todoId: ID!): TodoResult!
+    products: ProductsResult!
+    product(productId: ID!): ProductResult!
 }
 
 type DeleteTodoResult {
