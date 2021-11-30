@@ -5,8 +5,6 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-
-
 app = Flask(__name__, static_url_path='', static_folder='../../dist')
 CORS(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = f'{os.getenv("POSTGRESQL_URI")}'

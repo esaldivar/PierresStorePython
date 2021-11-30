@@ -28,21 +28,25 @@ export const App = () => {
   const graphQLTestFunc = (): void => {
     axios
       .post('/graphql', {
-        query: `query 
-          fetchAllTodos {
-            todos {
-              success
-              errors
-              todos {
-                description
-                completed
-                id
-              }
+        query: `query fetchAllProducts {
+          products{
+            success
+            errors
+            products {
+            id
+            productName
+            imageUrl
+            price
+            information
+            season
+            category
+            quantity
             }
           }
+        }
         `,
       })
-      .then((res) => getGraphqlData(res.data.data.todos.todos))
+      .then((res) => getGraphqlData(res.data.data.products.products))
       .catch(console.error);
   };
 
@@ -55,7 +59,14 @@ export const App = () => {
         <ul>
           {graphqlData ? (
             graphqlData.map((el: any, index: number) => {
-              return <li key={`${el}${index}`}>{el.description}</li>;
+              return (
+                <div key={index}>
+                  <li key={`${el.productName}${index}`}>{el.productName}</li>
+                  <li key={`${el.information}${index}`}>{el.information}</li>
+                  <li key={`${el.price}${index}`}>{el.price}</li>
+                  <li key={`${el.imageUrl}${index}`}>{el.imageUrl}</li>
+                </div>
+              );
             })
           ) : (
             <li> not loaded yet </li>
