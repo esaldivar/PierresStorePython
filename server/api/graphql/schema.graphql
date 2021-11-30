@@ -59,6 +59,7 @@ type DeleteTodoResult {
 
 type Mutation {
     createTodo(description: String!, dueDate: String!): TodoResult!
+    createProduct(productName: String!, imageUrl: String!, price: Int!, information: String! , season: [String], category: [String]! , quantity: String!): ProductResult!
     deleteTodo(todoId: ID!): DeleteTodoResult!
     markDone(todoId: String!): TodoResult!
     updateDueDate(todoId: String, newDate: String!): TodoResult!

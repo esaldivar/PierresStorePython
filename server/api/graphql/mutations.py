@@ -3,7 +3,7 @@ from datetime import datetime
 from ariadne import convert_kwargs_to_snake_case
 
 from api import db
-from api.database.models import Todo
+from api.database.models import Todo, Products
 
 
 @convert_kwargs_to_snake_case
@@ -24,6 +24,26 @@ def resolve_create_todo(obj, info, description, due_date):
             "success": False,
             "errors": [f"Incorrect date format provided. Date should be in "
                        f"the format dd-mm-yyyy"]
+        }
+
+    return payload
+
+@convert_kwargs_to_snake_case
+def resolve_create_product(obj, info, product_name, image_url, price, information, season, category, quantity):
+    try:
+        product = Products(
+            product_name=product_name, image_url=image_url, price=price, information=information ,season=season , category=category , quantity=quantity
+        )
+        db.session.add(product)
+        db.session.commit()
+        payload = {
+            "success": True,
+            "product": product.to_dict()
+        }
+    except ValueError:  # product format errors
+        payload = {
+            "success": False,
+            "errors": [f"Incorrectly added product.  Please try again."]
         }
 
     return payload
