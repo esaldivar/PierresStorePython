@@ -6,7 +6,7 @@ from ariadne import load_schema_from_path, make_executable_schema, \
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
 from api.graphql.queries import resolve_todos, resolve_todo, resolve_products, resolve_product
-from api.graphql.mutations import resolve_create_todo, resolve_mark_done, resolve_delete_todo, resolve_update_due_date, resolve_create_product
+from api.graphql.mutations import resolve_create_todo, resolve_mark_done, resolve_delete_todo, resolve_update_due_date, resolve_create_product, resolve_delete_product
 
 query = ObjectType("Query")
 query.set_field("todos", resolve_todos)
@@ -18,6 +18,7 @@ mutation = ObjectType("Mutation")
 mutation.set_field("createTodo", resolve_create_todo)
 mutation.set_field("markDone", resolve_mark_done)
 mutation.set_field("deleteTodo", resolve_delete_todo)
+mutation.set_field("deleteProduct", resolve_delete_product)
 mutation.set_field("updateDueDate", resolve_update_due_date)
 mutation.set_field("createProduct", resolve_create_product)
 
