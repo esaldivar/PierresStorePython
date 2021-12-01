@@ -29,7 +29,7 @@ class Customers(db.Model):
         }
 
 class Products(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    product_id  = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String, unique=True, nullable=False)
     image_url = db.Column(db.String, unique=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
@@ -40,7 +40,7 @@ class Products(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id,
+            "product_id ": self.product_id,
             "product_name": self.product_name,
             "image_url": self.image_url,
             "price": self.price,

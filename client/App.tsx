@@ -33,7 +33,6 @@ export const App = () => {
             success
             errors
             products {
-            id
             productName
             imageUrl
             price
@@ -63,8 +62,12 @@ export const App = () => {
                 <div key={index}>
                   <li key={`${el.productName}${index}`}>{el.productName}</li>
                   <li key={`${el.information}${index}`}>{el.information}</li>
-                  <li key={`${el.price}${index}`}>{el.price}</li>
-                  <li key={`${el.imageUrl}${index}`}>{el.imageUrl}</li>
+                  <li key={`${el.price}${index}`}>{el.price} gold</li>
+                  <img
+                    key={`${el.imageUrl}${index}`}
+                    src={el.imageUrl}
+                    alt={`${el.productName}`}
+                  />
                 </div>
               );
             })

@@ -6,7 +6,7 @@ from ariadne import load_schema_from_path, make_executable_schema, \
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
 from api.graphql.queries import resolve_products, resolve_product
-from api.graphql.mutations import resolve_mark_done, resolve_create_product, resolve_delete_product
+from api.graphql.mutations import resolve_create_product, resolve_delete_product
 
 query = ObjectType("Query")
 query.set_field("products", resolve_products)
