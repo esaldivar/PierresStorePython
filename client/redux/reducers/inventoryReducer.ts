@@ -13,7 +13,7 @@ export default function reducer(state = initalState, action: AnyAction) {
     case 'SEARCH': {
       return {
         ...state,
-        search: action,
+        searchInput: action.payload,
       };
     }
     default:

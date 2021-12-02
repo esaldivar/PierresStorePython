@@ -7,7 +7,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const NavBar = () => {
   const dispatch = useDispatch();
   const { search } = bindActionCreators(inventoryActionCreator, dispatch);
-  const { count } = useSelector((state: RootStateOrAny) => state.inventory);
+  const { searchInput } = useSelector(
+    (state: RootStateOrAny) => state.inventory
+  );
 
   return (
     <div className="sticky flex items-center mt-2 justify-evenly text-primary">
@@ -41,6 +43,10 @@ const NavBar = () => {
           placeholder="Search Pierre's Store"
           id="searchInput"
           autoComplete="off"
+          value={searchInput}
+          onChange={(e) => {
+            search(e.target.value);
+          }}
         />
       </div>
       <div className="w-32">
