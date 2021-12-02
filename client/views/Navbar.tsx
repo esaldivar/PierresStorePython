@@ -3,10 +3,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () => {
   return (
-    <div className="navBar">
-      <div className="iconDiv">
+    <div className="sticky flex items-center justify-evenly text-primary">
+      <div className="flex items-center">
         <img
-          className="pierreIcon"
+          className="w-1/2 border-2 rounded-full border-primary"
           src="https://pierresstore.s3.us-east-2.amazonaws.com/Pierre.png"
           alt="Website Icon Pierre Character"
         />
@@ -22,21 +22,24 @@ const NavBar = () => {
           <h4>In Season</h4>
         </a>
       </div>
-      <div className="search">
-        <FontAwesomeIcon className="searchIcon" icon={faSearch} size="xs" />
+      <div className="rounded bg-lightBrown">
+        <FontAwesomeIcon
+          className="ml-2 text-gray-400 center fa fa-search"
+          icon={faSearch}
+          size="xs"
+        />
         <input
-          className="navSearch"
-          type="search"
+          className="px-2 text-gray-500 rounded outline-none bg-lightBrown center"
+          type="text"
           name="search"
           placeholder="Search Pierre's Store"
           id="searchInput"
           autoComplete="off"
         />
       </div>
-      <div>
+      <div className="w-32">
         <a href="https://sass-lang.com">
           <img
-            className="shoppingCartIcon"
             src="https://pierresstore.s3.us-east-2.amazonaws.com/Traveling_Cart.png"
             alt="Shopping Cart Icon"
           />
