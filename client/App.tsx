@@ -3,8 +3,6 @@
 import './style.css';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { Login } from './views/login';
-import { ReduxTester } from './views/reduxTest';
 import NavBar from './views/Navbar';
 
 export const App = () => {
@@ -42,8 +40,6 @@ export const App = () => {
     <div className="flex flex-col m-auto">
       <Provider store={store}>
         <NavBar />
-        <ReduxTester />
-        <Login />
       </Provider>
     </div>
   );

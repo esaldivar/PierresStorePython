@@ -1,9 +1,16 @@
+import { useDispatch, RootStateOrAny, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { inventoryActionCreator } from '../redux/actionReferences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const { search } = bindActionCreators(inventoryActionCreator, dispatch);
+  const { count } = useSelector((state: RootStateOrAny) => state.inventory);
+
   return (
-    <div className="sticky flex items-center justify-evenly text-primary">
+    <div className="sticky flex items-center mt-2 justify-evenly text-primary">
       <div className="flex items-center">
         <img
           className="w-3/4 border-2 border-none rounded-full"
