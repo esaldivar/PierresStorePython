@@ -6,23 +6,22 @@ const NavBar = () => {
     <div className="sticky flex items-center justify-evenly text-primary">
       <div className="flex items-center">
         <img
-          className="w-1/2 border-2 rounded-full border-primary"
+          className="w-3/4 border-2 border-none rounded-full"
           src="https://pierresstore.s3.us-east-2.amazonaws.com/Pierre.png"
           alt="Website Icon Pierre Character"
         />
-        <h4>Pierre&rsquo;s Store</h4>
       </div>
-      <div>
+      <div className="text-3xl">
         <a href="https://github.com/esaldivar/PierresStore/blob/main/server/models/store.sql">
           <h4>Favorites</h4>
         </a>
       </div>
-      <div>
+      <div className="text-3xl">
         <a href="https://github.com/esaldivar/PierresStore/blob/main/server/models/store.sql">
           <h4>In Season</h4>
         </a>
       </div>
-      <div className="rounded bg-lightBrown">
+      <div className="px-1 py-1 rounded bg-lightBrown">
         <FontAwesomeIcon
           className="ml-2 text-gray-400 center fa fa-search"
           icon={faSearch}
