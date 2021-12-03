@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import reduxTestReducer from './reduxTestReducer';
+import inventoryReducer from './inventoryReducer';
 
 // creates a store of reducers
 const reducers = combineReducers({
-  reduxTest: reduxTestReducer,
+  inventory: inventoryReducer,
 });
 
 export default reducers;

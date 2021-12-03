@@ -1,37 +1,5 @@
-from api.database.models import Todo, Customers, Products
+from api.database.models import Customers, Products
 from ariadne import convert_kwargs_to_snake_case
-
-
-def resolve_todos(obj, info):
-    try:
-        todos = [todo.to_dict() for todo in Todo.query.all()]
-        payload = {
-            "success": True,
-            "todos": todos
-        }
-    except Exception as error:
-        payload = {
-            "success": False,
-            "errors": [str(error)]
-        }
-    return payload
-
-@convert_kwargs_to_snake_case
-def resolve_todo(obj, info, todo_id):
-    try:
-        todo = Todo.query.get(todo_id)
-        payload = {
-            "success": True,
-            "todo": todo.to_dict()
-        }
-
-    except AttributeError:  # todo not found
-        payload = {
-            "success": False,
-            "errors": [f"Todo item matching id {todo_id} not found"]
-        }
-
-    return payload
 
 def resolve_products(obj, info):
     try:
@@ -48,18 +16,21 @@ def resolve_products(obj, info):
     return payload
 
 @convert_kwargs_to_snake_case
-def resolve_product(obj, info, product_id):
+def resolve_product(obj, info, product_name):
     try:
-        product = Products.query.get(product_id)
+        products = [product.to_dict() for product in Products.query.all()]
+        new_product = ''
+        for product in products:
+            if(product["product_name"] == product_name):
+                new_product = product
         payload = {
             "success": True,
-            "product": product.to_dict()
+            "product": new_product
         }
-
     except AttributeError:  # product not found
         payload = {
             "success": False,
-            "errors": [f"Product item matching id {product_id} not found"]
+            "errors": [f"Unable to find {product_name}"]
         }
 
     return payload

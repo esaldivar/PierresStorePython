@@ -3,27 +3,8 @@ schema {
     mutation: Mutation
 }
 
-type Todo {
-    id: ID!
-    description: String!
-    completed: Boolean!
-    dueDate: String!
-}
-
-type TodoResult {
-    success: Boolean!
-    errors: [String]
-    todo: Todo
-}
-
-type TodosResult {
-    success: Boolean!
-    errors: [String]
-    todos: [Todo]
-}
-
 type Product {
-    id: ID!
+    productId: ID!
     productName: String!
     imageUrl: String!
     price: Int!
@@ -46,20 +27,16 @@ type ProductsResult {
 }
 
 type Query {
-    todos: TodosResult!
-    todo(todoId: ID!): TodoResult!
     products: ProductsResult!
-    product(productId: ID!): ProductResult!
+    product(productName: String): ProductResult!
 }
 
-type DeleteTodoResult {
+type DeleteProductResult {
     success: Boolean!
     errors: [String]
 }
 
 type Mutation {
-    createTodo(description: String!, dueDate: String!): TodoResult!
-    deleteTodo(todoId: ID!): DeleteTodoResult!
-    markDone(todoId: String!): TodoResult!
-    updateDueDate(todoId: String, newDate: String!): TodoResult!
+    createProduct(productName: String!, imageUrl: String!, price: Int!, information: String! , season: [String], category: [String]! , quantity: String!): ProductResult!
+    deleteProduct(productId: ID!): DeleteProductResult!
 }

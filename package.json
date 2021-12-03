@@ -57,6 +57,10 @@
     "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@reduxjs/toolkit": "^1.6.2",
     "axios": "^0.24.0",
     "lodash": "^4.17.21",
@@ -65,6 +69,19 @@
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.0"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom",
+    "moduleDirectories": [
+      "node_modules",
+      "utils",
+     "__dirname"
+    ],
+
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   },
   "proxy": "http://localhost:5000"
 }

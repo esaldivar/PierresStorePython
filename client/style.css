@@ -1,0 +1,21 @@
+
+* {
+    margin: 0;
+    }
+  
+body {
+    background-image: url('https://pierresstore.s3.us-east-2.amazonaws.com/stardewbackground.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+h1 {
+    font-size: 1rem;
+    color: white;
+  }
+
+h3 {
+    font-size: 1rem;
+  }

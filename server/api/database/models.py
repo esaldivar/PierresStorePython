@@ -4,20 +4,6 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import *
 
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.String)
-    completed = db.Column(db.Boolean, default=False)
-    due_date = db.Column(db.Date)
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "completed": self.completed,
-            "description": self.description,
-            "due_date": str(self.due_date.strftime('%d-%m-%Y'))
-        }
-
 class Customers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
@@ -43,7 +29,7 @@ class Customers(db.Model):
         }
 
 class Products(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    product_id  = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String, unique=True, nullable=False)
     image_url = db.Column(db.String, unique=True, nullable=False)
     price = db.Column(db.Integer, nullable=False)
@@ -54,7 +40,7 @@ class Products(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id,
+            "product_id ": self.product_id,
             "product_name": self.product_name,
             "image_url": self.image_url,
             "price": self.price,

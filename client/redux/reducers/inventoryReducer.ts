@@ -1,33 +1,27 @@
 import { AnyAction } from 'redux';
 
-interface reduxTest {
-  count: number;
+interface inventory {
+  searchInput: string;
+  searchViewPage: string;
 }
 
-const initalState: reduxTest = {
-  count: 0,
+const initalState: inventory = {
+  searchInput: '',
+  searchViewPage: '',
 };
 
 export default function reducer(state = initalState, action: AnyAction) {
   switch (action.type) {
-    case 'ADD': {
+    case 'SEARCH': {
       return {
         ...state,
-        count: state.count + 1,
+        searchInput: action.payload,
       };
     }
-
-    case 'SUBTRACT': {
+    case 'SEARCHVIEW': {
       return {
         ...state,
-        count: state.count - 1,
-      };
-    }
-
-    case 'RESET': {
-      return {
-        ...state,
-        count: 0,
+        searchViewPage: action.payload,
       };
     }
     default:
