@@ -7,16 +7,17 @@ import { useState } from 'react';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const { search } = bindActionCreators(inventoryActionCreator, dispatch);
+  const { search, searchView } = bindActionCreators(
+    inventoryActionCreator,
+    dispatch
+  );
   const { searchInput } = useSelector(
     (state: RootStateOrAny) => state.inventory
   );
-  const [entered, pressEnter] = useState<boolean>(false);
 
   const onEnterButton = (e: any) => {
     if (e.key === 'Enter') {
-      console.log(searchInput);
-      return pressEnter(true);
+      return searchView(searchInput);
     }
     return;
   };

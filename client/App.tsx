@@ -4,6 +4,7 @@ import './style.css';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import NavBar from './views/Navbar';
+import SearchResult from './views/SearchResult';
 
 export const App = () => {
   // const [graphqlData, getGraphqlData] = useState<string[]>([]);
@@ -40,6 +41,7 @@ export const App = () => {
     <div className="flex flex-col m-auto">
       <Provider store={store}>
         <NavBar />
+        <SearchResult />
       </Provider>
     </div>
   );

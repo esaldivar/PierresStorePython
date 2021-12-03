@@ -6,3 +6,12 @@ export const search = (input: string) => {
     });
   };
 };
+
+export const searchView = (input: string) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: 'SEARCHVIEW',
+      payload: input,
+    });
+  };
+};
