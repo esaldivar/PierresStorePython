@@ -43,6 +43,7 @@ export const App = () => {
         <NavBar />
         <SearchResult />
       </Provider>
+      <h1>Hello from Auroraa</h1>
     </div>
   );
 };
