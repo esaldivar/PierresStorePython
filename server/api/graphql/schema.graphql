@@ -28,7 +28,7 @@ type ProductsResult {
 
 type Query {
     products: ProductsResult!
-    product(productId: ID!): ProductResult!
+    product(productName: String): ProductResult!
 }
 
 type DeleteProductResult {

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { inventoryActionCreator } from '../redux/actionReferences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import axios from 'axios';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,26 @@ const SearchBar = () => {
 
   const onEnterButton = (e: any) => {
     if (e.key === 'Enter') {
-      return searchView(searchInput);
+      axios
+        .post('/graphql', {
+          query: `query fetchProduct {
+              product(productName: "${searchInput}") {
+                success
+                errors
+                product { 
+                  productName
+                  imageUrl
+                  price
+                  information
+                  season
+                  category
+                  quantity
+                }
+              }
+            }`,
+        })
+        .then((res) => searchView(res.data.data.product.product.productName))
+        .catch(console.error);
     }
     return;
   };

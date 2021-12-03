@@ -16,18 +16,21 @@ def resolve_products(obj, info):
     return payload
 
 @convert_kwargs_to_snake_case
-def resolve_product(obj, info, product_id):
+def resolve_product(obj, info, product_name):
     try:
-        product = Products.query.get(product_id)
+        products = [product.to_dict() for product in Products.query.all()]
+        new_product = ''
+        for product in products:
+            if(product["product_name"] == product_name):
+                new_product = product
         payload = {
             "success": True,
-            "product": product.to_dict()
+            "product": new_product
         }
-
     except AttributeError:  # product not found
         payload = {
             "success": False,
-            "errors": [f"Product item matching id {product_id} not found"]
+            "errors": [f"Unable to find {product_name}"]
         }
 
     return payload
