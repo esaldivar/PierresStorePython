@@ -1,5 +1,4 @@
 import { RootStateOrAny, useSelector } from 'react-redux';
-import axios from 'axios';
 
 const SearchResult = () => {
   const { searchViewPage } = useSelector(
