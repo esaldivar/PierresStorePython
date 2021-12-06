@@ -27,6 +27,7 @@ const SearchBar = () => {
           const product = res.data.data.product.product;
           if (product.productName.length > 0) {
             searchView(product);
+            search('');
           }
         })
         .catch(console.error);

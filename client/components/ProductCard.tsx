@@ -8,13 +8,13 @@ const ProductCard = () => {
   console.log(singleResult.season);
   return (
     <div className="bg-white bg-opacity-75 rounded searchBorder">
-      <h1 className="w-full py-2 text-center bg-greenTitle">
+      <h1 className="w-full py-2 text-lg text-center bg-greenTitle">
         {singleResult.productName}
       </h1>
       <div className="flex m-auto">
-        <div className="flex flex-col w-1/3 px-6 py-4 m-auto align-middle bg-opacity-75 ">
+        <div className="flex flex-col w-1/3 px-6 py-4 m-auto align-middle bg-opacity-75 border-r-2 border-primary">
           <img
-            className="w-3/4 mb-2"
+            className="h-auto mb-2"
             src={singleResult.imageUrl}
             alt={singleResult.productName}
           />
