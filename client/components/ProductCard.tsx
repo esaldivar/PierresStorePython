@@ -7,10 +7,12 @@ const ProductCard = () => {
 
   console.log(singleResult.season);
   return (
-    <div className="bg-red-400">
-      <h1 className="text-center">{singleResult.productName}</h1>
-      <div className="flex">
-        <div className="flex flex-col w-1/3 px-6 py-4 m-auto align-middle bg-green-400">
+    <div className="bg-white bg-opacity-75 rounded searchBorder">
+      <h1 className="w-full py-2 text-center bg-greenTitle">
+        {singleResult.productName}
+      </h1>
+      <div className="flex m-auto">
+        <div className="flex flex-col w-1/3 px-6 py-4 m-auto align-middle bg-opacity-75 ">
           <img
             className="w-3/4 mb-2"
             src={singleResult.imageUrl}
@@ -25,25 +27,35 @@ const ProductCard = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col px-6 py-4 bg-yellow-400">
-          <h2>
+        <div className="flex flex-col px-6 py-4 bg-opacity-75">
+          <p className="font-bold">
             Categories:{' '}
             {singleResult.category.length > 0 ? (
               singleResult.category.map((el: string, index: number) => {
-                return <span key={`${el}${index}`}> {el} </span>;
+                return (
+                  <span className="font-normal" key={`${el}${index}`}>
+                    {' '}
+                    {el}{' '}
+                  </span>
+                );
               })
             ) : (
-              <span>No categories</span>
+              <span className="font-normal">No categories</span>
             )}
-          </h2>
-          <p>
+          </p>
+          <p className="font-bold">
             Seasons:{' '}
             {singleResult.season[0] !== '' ? (
               singleResult.season.map((el: string, index: number) => {
-                return <span key={`${el}${index}`}> {el} </span>;
+                return (
+                  <span className="font-normal" key={`${el}${index}`}>
+                    {' '}
+                    {el}{' '}
+                  </span>
+                );
               })
             ) : (
-              <span className="italic"> Not Seasonal.</span>
+              <span className="italic font-normal"> Not Seasonal.</span>
             )}
           </p>
           <p>{singleResult.information}</p>
