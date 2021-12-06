@@ -2,12 +2,27 @@ import { AnyAction } from 'redux';
 
 interface inventory {
   searchInput: string;
-  searchViewPage: string;
+  singleResult: {
+    productName: string;
+    imageUrl: string;
+    price: string;
+    information: string;
+    season?: string[];
+    category: string[];
+    quantity: string;
+  };
 }
 
 const initalState: inventory = {
   searchInput: '',
-  searchViewPage: '',
+  singleResult: {
+    productName: '',
+    imageUrl: '',
+    price: '',
+    information: '',
+    category: [],
+    quantity: '',
+  },
 };
 
 export default function reducer(state = initalState, action: AnyAction) {
@@ -21,7 +36,7 @@ export default function reducer(state = initalState, action: AnyAction) {
     case 'SEARCHVIEW': {
       return {
         ...state,
-        searchViewPage: action.payload,
+        singleResult: action.payload,
       };
     }
     default:

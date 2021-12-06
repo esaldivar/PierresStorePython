@@ -1,11 +1,17 @@
 import { RootStateOrAny, useSelector } from 'react-redux';
 
 const SearchResult = () => {
-  const { searchViewPage } = useSelector(
+  const { singleResult } = useSelector(
     (state: RootStateOrAny) => state.inventory
   );
 
-  return <div>{searchViewPage.length > 0 && <h1>{searchViewPage}</h1>}</div>;
+  return (
+    <div>
+      {singleResult.productName.length > 0 && (
+        <img src={singleResult.imageUrl} alt={singleResult.productName} />
+      )}
+    </div>
+  );
 };
 
 export default SearchResult;

@@ -4,6 +4,7 @@ import { inventoryActionCreator } from '../redux/actionReferences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { findProduct } from '../utilities/queries';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -19,23 +20,14 @@ const SearchBar = () => {
     if (e.key === 'Enter') {
       axios
         .post('/graphql', {
-          query: `query fetchProduct {
-              product(productName: "${searchInput}") {
-                success
-                errors
-                product { 
-                  productName
-                  imageUrl
-                  price
-                  information
-                  season
-                  category
-                  quantity
-                }
-              }
-            }`,
+          query: findProduct(searchInput),
         })
-        .then((res) => searchView(res.data.data.product.product.productName))
+        .then((res) => {
+          const product = res.data.data.product.product;
+          if (product.productName.length > 0) {
+            searchView(product);
+          }
+        })
         .catch(console.error);
     }
     return;
