@@ -20,9 +20,10 @@ const SearchBar = () => {
     if (e.key === 'Enter') {
       axios
         .post('/graphql', {
-          query: findProduct(searchInput),
+          query: findProduct(searchInput.toLowerCase()),
         })
         .then((res) => {
+          console.log(res);
           const product = res.data.data.product.product;
           if (product.productName.length > 0) {
             searchView(product);

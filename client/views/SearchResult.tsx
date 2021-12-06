@@ -1,4 +1,5 @@
 import { RootStateOrAny, useSelector } from 'react-redux';
+import ProductCard from '../components/ProductCard';
 
 const SearchResult = () => {
   const { singleResult } = useSelector(
@@ -6,10 +7,8 @@ const SearchResult = () => {
   );
 
   return (
-    <div>
-      {singleResult.productName.length > 0 && (
-        <img src={singleResult.imageUrl} alt={singleResult.productName} />
-      )}
+    <div className="flex w-1/3 m-auto center">
+      {singleResult.productName.length > 0 && <ProductCard />}
     </div>
   );
 };
