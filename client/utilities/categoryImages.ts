@@ -26,9 +26,11 @@ export const Categories: categoryImages = {
   'plant hormones':
     'https://stardewvalleywiki.com/mediawiki/images/9/94/Speed-Gro.png',
   seeds: 'https://stardewvalleywiki.com/mediawiki/images/2/2e/Mixed_Seeds.png',
+  soil: 'https://stardewvalleywiki.com/mediawiki/images/a/a2/Clay.png',
   storage: 'https://stardewvalleywiki.com/mediawiki/images/b/b1/Backpack.png',
   trees:
     'https://stardewvalleywiki.com/mediawiki/images/b/b8/Orange_Stage_5_Fruit.png',
   vegetables:
     'https://stardewvalleywiki.com/mediawiki/images/4/40/Bok_Choy.png',
+  vegetable: 'https://stardewvalleywiki.com/mediawiki/images/4/40/Bok_Choy.png',
 };
