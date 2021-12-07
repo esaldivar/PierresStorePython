@@ -1,16 +1,23 @@
 import { RootStateOrAny, useSelector } from 'react-redux';
+import FavoriteBtn from './FavoriteBtn';
+import { upperCaseFirstChar } from '../utilities/helperFuncs';
 
 const ProductCard = () => {
   const { singleResult } = useSelector(
     (state: RootStateOrAny) => state.inventory
   );
 
-  console.log(singleResult.season);
+  const productNameFormatted = upperCaseFirstChar(singleResult.productName);
+
   return (
     <div className="bg-white bg-opacity-75 rounded searchBorder">
-      <h1 className="w-full py-2 text-lg text-center bg-greenTitle">
-        {singleResult.productName}
-      </h1>
+      <div className="flex w-full px-2 py-2 bg-greenTitle">
+        <FavoriteBtn />
+        <h1 className="w-11/12 py-2 text-lg text-center justify-self-center">
+          {productNameFormatted}
+        </h1>
+      </div>
+
       <div className="flex m-auto">
         <div className="flex flex-col w-1/3 px-6 py-4 m-auto align-middle bg-opacity-75 border-r-2 border-primary">
           <img
@@ -24,6 +31,7 @@ const ProductCard = () => {
               className="w-1/3 item-bottom"
               src="https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png"
               alt="gold coin"
+              title="gold coin"
             />
           </div>
         </div>
@@ -33,9 +41,12 @@ const ProductCard = () => {
             {singleResult.category.length > 0 ? (
               singleResult.category.map((el: string, index: number) => {
                 return (
-                  <span className="font-normal" key={`${el}${index}`}>
-                    {' '}
-                    {el}{' '}
+                  <span
+                    className="font-normal"
+                    title={el}
+                    key={`${el}${index}`}
+                  >
+                    {el}
                   </span>
                 );
               })
@@ -48,9 +59,12 @@ const ProductCard = () => {
             {singleResult.season[0] !== '' ? (
               singleResult.season.map((el: string, index: number) => {
                 return (
-                  <span className="font-normal" key={`${el}${index}`}>
-                    {' '}
-                    {el}{' '}
+                  <span
+                    className="font-normal"
+                    title={el}
+                    key={`${el}${index}`}
+                  >
+                    {el}
                   </span>
                 );
               })
