@@ -7,9 +7,9 @@ interface seasonImages {
 }
 
 export const Seasons: seasonImages = {
-  spring: 'https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png',
+  spring: 'https://stardewvalleywiki.com/mediawiki/images/c/cf/Tulip.png',
   summer:
     'https://stardewvalleywiki.com/mediawiki/images/3/3d/Rainbow_Shell.png',
   fall: 'https://stardewvalleywiki.com/mediawiki/images/6/64/Pumpkin.png',
-  winter: '',
+  winter: 'https://stardewvalleywiki.com/mediawiki/images/e/ef/Rarecrow_4.png',
 };
