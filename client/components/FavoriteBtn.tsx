@@ -26,7 +26,7 @@ const FavoriteBtn = () => {
         />
       ) : (
         <FontAwesomeIcon
-          className="text-gray-300 fill-current"
+          className="text-gray-300 fill-current hover:text-red-600"
           icon={farHeart}
           size="2x"
         />

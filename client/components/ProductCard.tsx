@@ -1,6 +1,9 @@
 import { RootStateOrAny, useSelector } from 'react-redux';
 import FavoriteBtn from './FavoriteBtn';
 import { upperCaseFirstChar } from '../utilities/helperFuncs';
+import { Categories } from '../utilities/categoryImages';
+import { Seasons } from '../utilities/seasonImages';
+import PierreButton from './AddToCardBtn';
 
 const ProductCard = () => {
   const { singleResult } = useSelector(
@@ -10,7 +13,7 @@ const ProductCard = () => {
   const productNameFormatted = upperCaseFirstChar(singleResult.productName);
 
   return (
-    <div className="bg-white bg-opacity-75 rounded searchBorder">
+    <div className="bg-white bg-opacity-50 rounded searchBorder">
       <div className="flex w-full px-2 py-2 bg-greenTitle">
         <FavoriteBtn />
         <h1 className="w-11/12 py-2 text-lg text-center justify-self-center">
@@ -35,45 +38,57 @@ const ProductCard = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col px-6 py-4 bg-opacity-75">
-          <p className="font-bold">
-            Categories:{' '}
-            {singleResult.category.length > 0 ? (
-              singleResult.category.map((el: string, index: number) => {
-                return (
-                  <span
-                    className="font-normal"
-                    title={el}
-                    key={`${el}${index}`}
-                  >
-                    {el}
-                  </span>
-                );
-              })
-            ) : (
-              <span className="font-normal">No categories</span>
-            )}
-          </p>
-          <p className="font-bold">
-            Seasons:{' '}
-            {singleResult.season[0] !== '' ? (
-              singleResult.season.map((el: string, index: number) => {
-                return (
-                  <span
-                    className="font-normal"
-                    title={el}
-                    key={`${el}${index}`}
-                  >
-                    {el}
-                  </span>
-                );
-              })
-            ) : (
-              <span className="italic font-normal"> Not Seasonal.</span>
-            )}
-          </p>
-          <p>{singleResult.information}</p>
+        <div className="flex-col px-6 py-4 bg-opacity-75">
+          <div className="flex-row">
+            <p className="flex font-bold">
+              Categories:{' '}
+              {singleResult.category.length > 0 ? (
+                singleResult.category.map((el: string, index: number) => {
+                  if (Categories[el]) {
+                    return (
+                      <img
+                        className="flex h-6 ml-2"
+                        src={Categories[el]}
+                        alt={el}
+                        key={`${index}${el}category`}
+                        title={el}
+                      />
+                    );
+                  }
+                })
+              ) : (
+                <span className="font-normal">No categories</span>
+              )}
+            </p>
+          </div>
+          <div className="flex-row">
+            <p className="flex font-bold ">
+              Seasons:{' '}
+              {singleResult.season[0] !== '' ? (
+                singleResult.season.map((el: string, index: number) => {
+                  if (Seasons[el.toLowerCase()]) {
+                    return (
+                      <img
+                        className="flex h-6 ml-2"
+                        src={Seasons[el.toLowerCase()]}
+                        alt={el}
+                        key={`${index}${el}season`}
+                        title={el}
+                      />
+                    );
+                  }
+                })
+              ) : (
+                <span className="ml-4 italic font-normal"> Not Seasonal.</span>
+              )}
+            </p>
+          </div>
+
+          <p className="italic">{singleResult.information}</p>
         </div>
+      </div>
+      <div className="flex mt-4 mb-4">
+        <PierreButton text={'Add to Cart'} />
       </div>
     </div>
   );
