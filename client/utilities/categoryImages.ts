@@ -1,17 +1,4 @@
-interface categoryImages {
-  [index: string]: string;
-  cooking: string;
-  fertilizer: string;
-  flowers: string;
-  fruit: string;
-  grains: string;
-  miscellaneous: string;
-  'plant hormones': string;
-  seeds: string;
-  storage: string;
-  trees: string;
-  vegetables: string;
-}
+import { categoryImages } from '../types/utilityTypes';
 
 export const Categories: categoryImages = {
   cooking:

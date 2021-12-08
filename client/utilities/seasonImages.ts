@@ -1,10 +1,4 @@
-interface seasonImages {
-  [index: string]: string;
-  spring: string;
-  summer: string;
-  fall: string;
-  winter: string;
-}
+import { seasonImages } from '../types/utilityTypes';
 
 export const Seasons: seasonImages = {
   spring: 'https://stardewvalleywiki.com/mediawiki/images/c/cf/Tulip.png',

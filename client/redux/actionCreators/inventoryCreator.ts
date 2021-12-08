@@ -15,3 +15,12 @@ export const searchView = (input: string) => {
     });
   };
 };
+
+export const getInventory = (input: string) => {
+  return (dispatch: any) => {
+    dispatch({
+      type: 'INVENTORY',
+      payload: input,
+    });
+  };
+};
