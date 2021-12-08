@@ -19,12 +19,12 @@ const StoreTitleBar = () => {
   );
 
   return (
-    <div className="storeTitle">
-      <div className="titleSixth"></div>
-      <div className="titleSixth titleName">
+    <div className="flex items-center text-white bg-greenTitle">
+      <div></div>
+      <div className="flex mr-2 content-evenly">
         <h3>Product Name</h3>
-        <div>
-          <div>
+        <div className="flex-col m-0">
+          <div className="flex-col m-0">
             <button
               onClick={() => {
                 alphabetize(sortInventory, store);
@@ -52,13 +52,13 @@ const StoreTitleBar = () => {
           </div>
         </div>
       </div>
-      <div className="titleThird">
+      <div>
         <h3>Item Description</h3>
       </div>
-      <div className="titleSixth titleName">
+      <div>
         <h3>Season</h3>
       </div>
-      <div className="titleTwelve titlePrice">
+      <div>
         <h3>Price</h3>
         <div>
           <div>
@@ -89,7 +89,7 @@ const StoreTitleBar = () => {
           </div>
         </div>
       </div>
-      <div className="titleTwelve"></div>
+      <div></div>
     </div>
   );
 };
