@@ -1,6 +1,7 @@
 import { singleResult } from '../types/storeTypes';
 import PierreButton from './AddToCardBtn';
 import FavoriteBtn from './FavoriteBtn';
+import { Seasons } from '../utilities/seasonImages';
 
 const Product = ({
   productName,
@@ -13,7 +14,12 @@ const Product = ({
     <div className="flex items-center px-2 py-4 m-auto border-b-2 border-primary">
       <div className="flex w-2/12 items-evenly">
         <FavoriteBtn />
-        <img className="w-1/3" src={imageUrl} alt={productName} />
+        <img
+          className="w-1/3"
+          src={imageUrl}
+          alt={productName}
+          title={productName}
+        />
       </div>
       <div className="flex w-2/12 ">
         <h2 className="m-auto">{productName}</h2>
@@ -21,17 +27,25 @@ const Product = ({
       <div className="flex items-center w-3/12 ">
         <p className="m-auto italic text-center">{information}</p>
       </div>
-      <div className="flex-col w-1/12 ">
-        {season ? (
+      <div className="flex content-center w-1/12 ">
+        {season[0] ? (
           season.map((el: string, index: number) => {
-            return (
-              <p className="m-auto text-center" key={`${index}${el}`}>
-                {el}
-              </p>
-            );
+            if (Seasons[el.toLowerCase()]) {
+              return (
+                <img
+                  className="flex h-6 m-auto"
+                  src={Seasons[el.toLowerCase()]}
+                  alt={el}
+                  key={`${index}${el}season`}
+                  title={el}
+                />
+              );
+            }
           })
         ) : (
-          <h1 className="m-auto text-center">Any</h1>
+          <h1 className="m-auto italic text-center text-black">
+            Not seasonal.
+          </h1>
         )}
       </div>
       <div className="flex items-center w-2/12 ">
