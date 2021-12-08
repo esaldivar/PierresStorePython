@@ -26,7 +26,7 @@ const InventoryHome = () => {
       });
   }, []);
   return (
-    <div className="flex-col w-3/4 m-auto">
+    <div className="flex-col w-3/4 m-auto bg-white bg-opacity-50 rounded searchBorder">
       <StoreTitleBar />
       <ul>
         {store.length > 2 ? (

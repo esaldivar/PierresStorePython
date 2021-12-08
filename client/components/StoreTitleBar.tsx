@@ -19,10 +19,10 @@ const StoreTitleBar = () => {
   );
 
   return (
-    <div className="flex content-center m-auto text-white bg-greenTitle">
-      <div></div>
-      <div className="flex items-center mr-2 bg-red-500 content-evenly">
-        <h3>Product Name</h3>
+    <div className="flex text-white border-b-2 border-primary bg-greenTitle">
+      <div className="w-2/12 bg-red-500"></div>
+      <div className="flex items-center w-2/12 bg-gray-500">
+        <h3 className="m-auto center">Product Name</h3>
         <div className="flex-col m-0">
           <div className="flex-col m-0">
             <button
@@ -54,14 +54,14 @@ const StoreTitleBar = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center mr-2 bg-blue-500 content-evenly">
-        <h3>Item Description</h3>
+      <div className="flex items-center w-3/12 bg-green-500">
+        <h3 className="m-auto center">Item Description</h3>
       </div>
-      <div className="flex items-center mr-2 bg-gray-500 content-evenly">
-        <h3>Season</h3>
+      <div className="flex w-1/12 bg-yellow-300">
+        <h3 className="m-auto">Season</h3>
       </div>
-      <div className="flex items-center mr-2 bg-purple-500 content-evenly">
-        <h3>Price</h3>
+      <div className="flex items-center w-2/12 bg-red-500">
+        <h3 className="m-auto center">Price</h3>
         <div>
           <div>
             <button
@@ -93,7 +93,7 @@ const StoreTitleBar = () => {
           </div>
         </div>
       </div>
-      <div></div>
+      <div className="w-2/12 bg-blue-500"></div>
     </div>
   );
 };
