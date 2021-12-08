@@ -1,5 +1,13 @@
 import { Stores, singleResult } from '../types/storeTypes';
 
+export const initialAlpha = (inventory: Stores): Stores => {
+  return [...inventory].sort((a: singleResult, b: singleResult) => {
+    const nameA = a.productName.toUpperCase();
+    const nameB = b.productName.toUpperCase();
+    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+  });
+};
+
 export const alphabetize = (action: any, state: Stores): void => {
   action(
     [...state].sort((a: singleResult, b: singleResult) => {

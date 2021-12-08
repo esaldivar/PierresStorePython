@@ -6,6 +6,8 @@ import { getAllProducts } from '../utilities/queries';
 import { singleResult } from '../types/storeTypes';
 import StoreTitleBar from '../components/StoreTitleBar';
 import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
+import { initialAlpha } from '../utilities/helperFuncs';
+import Product from '../components/Product';
 
 const InventoryHome = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +20,7 @@ const InventoryHome = () => {
         query: getAllProducts(),
       })
       .then((res) => {
-        const allProducts = res.data.data.products.products;
+        const allProducts = initialAlpha(res.data.data.products.products);
         getInventory(allProducts);
       })
       .catch((err) => {
@@ -28,16 +30,24 @@ const InventoryHome = () => {
   return (
     <div className="flex-col w-3/4 m-auto bg-white bg-opacity-50 rounded searchBorder">
       <StoreTitleBar />
-      <ul>
-        {store.length > 2 ? (
-          store.map((el: singleResult, index: number) => {
-            console.log(el.productName);
-            return <li key={`${el}${index}`}>{el.productName} </li>;
-          })
-        ) : (
-          <li>Nothing rendered yet. </li>
-        )}
-      </ul>
+      {store ? (
+        store.map((el: singleResult, index: number) => {
+          return (
+            <Product
+              productName={el.productName}
+              imageUrl={el.imageUrl}
+              price={el.price}
+              season={el.season}
+              information={el.information}
+              category={el.category}
+              quantity={el.quantity}
+              key={`${index}${el}`}
+            />
+          );
+        })
+      ) : (
+        <h1> loading products</h1>
+      )}
     </div>
   );
 };

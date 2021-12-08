@@ -19,7 +19,7 @@ export const searchView = (input: string) => {
   };
 };
 
-export const getInventory = (input: string) => {
+export const getInventory = (input: Stores) => {
   return (dispatch: AppDispatch) => {
     dispatch({
       type: 'INVENTORY',
