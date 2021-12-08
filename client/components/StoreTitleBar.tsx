@@ -19,13 +19,14 @@ const StoreTitleBar = () => {
   );
 
   return (
-    <div className="flex items-center text-white bg-greenTitle">
+    <div className="flex content-center m-auto text-white bg-greenTitle">
       <div></div>
-      <div className="flex mr-2 content-evenly">
+      <div className="flex items-center mr-2 bg-red-500 content-evenly">
         <h3>Product Name</h3>
         <div className="flex-col m-0">
           <div className="flex-col m-0">
             <button
+              className="w-10 h-10 m-0 text-xs"
               onClick={() => {
                 alphabetize(sortInventory, store);
               }}
@@ -37,8 +38,9 @@ const StoreTitleBar = () => {
               />
             </button>
           </div>
-          <div>
+          <div className="flex-col m-0">
             <button
+              className="w-10 h-10 m-0 text-xs"
               onClick={() => {
                 reverseAlpha(sortInventory, store);
               }}
@@ -52,17 +54,18 @@ const StoreTitleBar = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex items-center mr-2 bg-blue-500 content-evenly">
         <h3>Item Description</h3>
       </div>
-      <div>
+      <div className="flex items-center mr-2 bg-gray-500 content-evenly">
         <h3>Season</h3>
       </div>
-      <div>
+      <div className="flex items-center mr-2 bg-purple-500 content-evenly">
         <h3>Price</h3>
         <div>
           <div>
             <button
+              className="w-10 h-10 m-0 text-xs"
               onClick={() => {
                 lowPrice(sortInventory, store);
               }}
@@ -76,6 +79,7 @@ const StoreTitleBar = () => {
           </div>
           <div>
             <button
+              className="w-10 h-10 m-0 text-xs"
               onClick={() => {
                 highPrice(sortInventory, store);
               }}
