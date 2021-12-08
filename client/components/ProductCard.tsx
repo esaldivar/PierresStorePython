@@ -1,4 +1,4 @@
-import { RootStateOrAny, useSelector } from 'react-redux';
+import { useAppSelector, RootState } from '../types/reduxTypes';
 import FavoriteBtn from './FavoriteBtn';
 import { upperCaseFirstChar } from '../utilities/helperFuncs';
 import { Categories } from '../utilities/categoryImages';
@@ -6,8 +6,8 @@ import { Seasons } from '../utilities/seasonImages';
 import PierreButton from './AddToCardBtn';
 
 const ProductCard = () => {
-  const { singleResult } = useSelector(
-    (state: RootStateOrAny) => state.inventory
+  const { singleResult } = useAppSelector(
+    (state: RootState) => state.inventory
   );
 
   const productNameFormatted = upperCaseFirstChar(singleResult.productName);

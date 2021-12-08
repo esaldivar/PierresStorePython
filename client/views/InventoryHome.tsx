@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
-import { useDispatch, RootStateOrAny, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { inventoryActionCreator } from '../redux/actionReferences';
 import axios from 'axios';
 import { getAllProducts } from '../utilities/queries';
 import { singleResult } from '../types/storeTypes';
+import StoreTitleBar from '../components/StoreTitleBar';
+import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
 
 const InventoryHome = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { getInventory } = bindActionCreators(inventoryActionCreator, dispatch);
-  const { store } = useSelector((state: RootStateOrAny) => state.inventory);
+  const { store } = useAppSelector((state: RootState) => state.inventory);
 
   useEffect(() => {
     axios
@@ -17,8 +18,8 @@ const InventoryHome = () => {
         query: getAllProducts(),
       })
       .then((res) => {
-        console.log(res.data.data.products.products);
-        getInventory(res.data.data.products.products);
+        const allProducts = res.data.data.products.products;
+        getInventory(allProducts);
       })
       .catch((err) => {
         console.log(err);
@@ -26,6 +27,7 @@ const InventoryHome = () => {
   }, []);
   return (
     <div>
+      <StoreTitleBar />
       <ul>
         {store.length > 2 ? (
           store.map((el: singleResult, index: number) => {

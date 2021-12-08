@@ -1,9 +1,9 @@
-import { RootStateOrAny, useSelector } from 'react-redux';
 import ProductCard from '../components/ProductCard';
+import { useAppSelector, RootState } from '../types/reduxTypes';
 
 const SearchResult = () => {
-  const { singleResult } = useSelector(
-    (state: RootStateOrAny) => state.inventory
+  const { singleResult } = useAppSelector(
+    (state: RootState) => state.inventory
   );
 
   return (

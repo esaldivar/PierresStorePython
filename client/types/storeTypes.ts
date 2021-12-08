@@ -13,3 +13,5 @@ export interface inventory {
   singleResult: singleResult;
   store: singleResult[];
 }
+
+export type Stores = singleResult[];
