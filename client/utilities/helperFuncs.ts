@@ -61,3 +61,7 @@ export const upperCaseFirstChar = (word: string): string => {
 
   return upperCaseWord;
 };
+
+export const numberWithCommas = (x: string): string => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

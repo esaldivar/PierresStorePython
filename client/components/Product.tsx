@@ -2,6 +2,7 @@ import { singleResult } from '../types/storeTypes';
 import PierreButton from './AddToCardBtn';
 import FavoriteBtn from './FavoriteBtn';
 import { Seasons } from '../utilities/seasonImages';
+import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
 
 const Product = ({
   productName,
@@ -22,7 +23,7 @@ const Product = ({
         />
       </div>
       <div className="flex w-2/12 ">
-        <h2 className="m-auto">{productName}</h2>
+        <h2 className="m-auto">{upperCaseFirstChar(productName)}</h2>
       </div>
       <div className="flex items-center w-3/12 ">
         <p className="m-auto italic text-center">{information}</p>
@@ -50,7 +51,7 @@ const Product = ({
       </div>
       <div className="flex items-center w-2/12 ">
         <p className="flex items-center m-auto text-center">
-          {price}
+          {numberWithCommas(price)}
           <img
             className="w-5 h-5"
             title="gold"
