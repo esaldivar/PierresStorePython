@@ -28,7 +28,7 @@ const InventoryHome = () => {
       });
   }, []);
   return (
-    <div className="flex-col w-3/4 m-auto bg-white bg-opacity-50 rounded searchBorder">
+    <div className="flex-col w-3/4 m-auto mt-10 mb-10 bg-white bg-opacity-50 rounded searchBorder">
       <StoreTitleBar />
       {store ? (
         store.map((el: singleResult, index: number) => {

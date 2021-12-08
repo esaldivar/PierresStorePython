@@ -12,10 +12,10 @@ const Product = ({
 }: singleResult) => {
   return (
     <div className="flex items-center px-2 py-4 m-auto border-b-2 border-primary">
-      <div className="flex w-2/12 items-evenly">
+      <div className="flex w-2/12">
         <FavoriteBtn />
         <img
-          className="w-1/3"
+          className="w-1/3 m-auto"
           src={imageUrl}
           alt={productName}
           title={productName}
