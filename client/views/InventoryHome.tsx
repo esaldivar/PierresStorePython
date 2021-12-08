@@ -24,7 +24,7 @@ const InventoryHome = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [getAllProducts, getInventory]);
+  }, [getAllProducts]);
   return (
     <div className="flex-col w-3/4 m-auto">
       <StoreTitleBar />
