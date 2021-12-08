@@ -15,3 +15,21 @@ export const findProduct = (product: string): string => {
         }
       }`;
 };
+
+export const getAllProducts = (): string => {
+  return `query fetchProducts {
+  products {
+    success
+    errors
+    products {
+    productName
+    imageUrl
+    price
+    information
+    season
+    category
+    quantity
+    }
+  }
+}`;
+};

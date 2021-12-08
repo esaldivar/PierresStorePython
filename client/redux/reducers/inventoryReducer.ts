@@ -1,17 +1,5 @@
 import { AnyAction } from 'redux';
-
-interface inventory {
-  searchInput: string;
-  singleResult: {
-    productName: string;
-    imageUrl: string;
-    price: string;
-    information: string;
-    season?: string[];
-    category: string[];
-    quantity: string;
-  };
-}
+import { inventory } from '../../types/storeTypes';
 
 const initalState: inventory = {
   searchInput: '',
@@ -23,6 +11,7 @@ const initalState: inventory = {
     category: [],
     quantity: '',
   },
+  store: [],
 };
 
 export default function reducer(state = initalState, action: AnyAction) {
@@ -37,6 +26,12 @@ export default function reducer(state = initalState, action: AnyAction) {
       return {
         ...state,
         singleResult: action.payload,
+      };
+    }
+    case 'INVENTORY': {
+      return {
+        ...state,
+        store: action.payload,
       };
     }
     default:
