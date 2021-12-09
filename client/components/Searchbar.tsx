@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { inventoryActionCreator } from '../redux/actionReferences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { findProduct } from '../utilities/queries';
 
@@ -15,6 +16,7 @@ const SearchBar = () => {
   const { searchInput } = useSelector(
     (state: RootStateOrAny) => state.inventory
   );
+  const navigate = useNavigate();
 
   const onEnterButton = (e: any) => {
     if (e.key === 'Enter') {
@@ -28,6 +30,7 @@ const SearchBar = () => {
           if (product.productName.length > 0) {
             searchView(product);
             search('');
+            navigate('search');
           }
         })
         .catch(console.error);

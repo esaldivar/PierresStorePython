@@ -1,5 +1,6 @@
 import './style.css';
 import { Provider } from 'react-redux';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import store from './redux/store';
 import NavBar from './views/Navbar';
 import SearchResult from './views/SearchResult';
@@ -10,8 +11,10 @@ export const App = () => {
     <div className="flex flex-col m-auto">
       <Provider store={store}>
         <NavBar />
-        <InventoryHome />
-        <SearchResult />
+        <Routes>
+          <Route index element={<InventoryHome />} />
+          <Route path="search" element={<SearchResult />} />
+        </Routes>
       </Provider>
     </div>
   );
