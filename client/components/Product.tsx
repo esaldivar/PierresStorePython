@@ -1,7 +1,7 @@
 import { singleResult } from '../types/storeTypes';
 import PierreButton from './AddToCardBtn';
 import FavoriteBtn from './FavoriteBtn';
-import { Seasons } from '../utilities/seasonImages';
+import { Seasons } from '../utilities/seasonalData';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
 
 const Product = ({
@@ -29,7 +29,7 @@ const Product = ({
         <p className="m-auto italic text-center">{information}</p>
       </div>
       <div className="flex content-center w-1/12 ">
-        {season[0] ? (
+        {season ? (
           season.map((el: string, index: number) => {
             if (Seasons[el.toLowerCase()]) {
               return (
@@ -42,6 +42,14 @@ const Product = ({
                 />
               );
             }
+            return (
+              <h1
+                className="m-auto italic text-center text-black"
+                key={`${index}${el}season`}
+              >
+                Not seasonal.
+              </h1>
+            );
           })
         ) : (
           <h1 className="m-auto italic text-center text-black">

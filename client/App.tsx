@@ -5,6 +5,7 @@ import store from './redux/store';
 import NavBar from './views/Navbar';
 import SearchResult from './views/SearchResult';
 import InventoryHome from './views/InventoryHome';
+import Seasonal from './views/Seasonal';
 
 export const App = () => {
   return (
@@ -14,6 +15,7 @@ export const App = () => {
         <Routes>
           <Route index element={<InventoryHome />} />
           <Route path="search" element={<SearchResult />} />
+          <Route path="seasonal" element={<Seasonal />} />
         </Routes>
       </Provider>
     </div>

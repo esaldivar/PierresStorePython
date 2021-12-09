@@ -1,8 +1,8 @@
 import { useAppSelector, RootState } from '../types/reduxTypes';
 import FavoriteBtn from './FavoriteBtn';
-import { upperCaseFirstChar } from '../utilities/helperFuncs';
+import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
 import { Categories } from '../utilities/categoryImages';
-import { Seasons } from '../utilities/seasonImages';
+import { Seasons } from '../utilities/seasonalData';
 import PierreButton from './AddToCardBtn';
 
 const ProductCard = () => {
@@ -29,7 +29,9 @@ const ProductCard = () => {
             alt={singleResult.productName}
           />
           <div className="flex items-center">
-            <h2 className="text-center">{singleResult.price}</h2>
+            <h2 className="text-center">
+              {numberWithCommas(singleResult.price)}
+            </h2>
             <img
               className="w-1/3 item-bottom"
               src="https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png"

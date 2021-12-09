@@ -19,9 +19,9 @@ const NavBar = () => {
         </a>
       </div>
       <div className="text-3xl">
-        <a href="https://github.com/esaldivar/PierresStore/blob/main/server/models/store.sql">
+        <Link to="seasonal">
           <h4>In Season</h4>
-        </a>
+        </Link>
       </div>
       <Searchbar />
       <div className="w-32">
