@@ -1,6 +1,6 @@
 import './style.css';
 import { Provider } from 'react-redux';
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import store from './redux/store';
 import NavBar from './views/Navbar';
 import SearchResult from './views/SearchResult';
