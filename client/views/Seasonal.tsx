@@ -29,7 +29,7 @@ const Seasonal = () => {
   }, []);
   const season = seasonSetter();
   return (
-    <div className="flex justify-center w-3/4">
+    <div className="flex justify-center w-3/4 m-auto">
       <div className="flex-col w-10/12 px-2 m-auto">
         <p>Seasonal Products</p>
         <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-3 gap-2">
