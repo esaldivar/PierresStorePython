@@ -15,7 +15,7 @@ export const App = () => {
         <Routes>
           <Route index element={<InventoryHome />} />
           <Route path="search" element={<SearchResult />} />
-          <Route path="seasonal" element={<Seasonal />} />
+          <Route path="/seasonal" element={<Seasonal />} />
         </Routes>
       </Provider>
     </div>

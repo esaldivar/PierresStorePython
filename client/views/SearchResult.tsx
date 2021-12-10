@@ -7,8 +7,20 @@ const SearchResult = () => {
   );
 
   return (
-    <div className="flex w-1/3 m-auto center">
-      {singleResult.productName.length > 0 && <ProductCard />}
+    <div className="flex items-center justify-center w-1/4 m-auto">
+      {singleResult ? (
+        <ProductCard
+          productName={singleResult.productName}
+          imageUrl={singleResult.imageUrl}
+          price={singleResult.price}
+          category={singleResult.category}
+          information={singleResult.information}
+          season={singleResult.season}
+          quantity={singleResult.quantity}
+        />
+      ) : (
+        <h1>No results.</h1>
+      )}
     </div>
   );
 };

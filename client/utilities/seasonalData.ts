@@ -10,14 +10,15 @@ export const Seasons: seasonImages = {
 
 export const seasonSetter = (): string => {
   const date = new Date();
-  const currentMonth = date.getMonth();
+  // const currentMonth = date.getMonth();
+  const currentMonth = 2;
   if (currentMonth > 1 && currentMonth < 5) {
-    return 'spring';
+    return 'Spring';
   } else if (currentMonth > 4 && currentMonth < 8) {
-    return 'summer';
+    return 'Summer';
   } else if (currentMonth > 7 && currentMonth < 11) {
-    return 'fall';
+    return 'Fall';
   } else {
-    return 'winter';
+    return 'Winter';
   }
 };

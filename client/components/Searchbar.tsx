@@ -1,5 +1,5 @@
-import { useDispatch, RootStateOrAny, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { useAppSelector, RootState, useAppDispatch } from '../types/reduxTypes';
 import { inventoryActionCreator } from '../redux/actionReferences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -8,14 +8,13 @@ import axios from 'axios';
 import { findProduct } from '../utilities/queries';
 
 const SearchBar = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { search, searchView } = bindActionCreators(
     inventoryActionCreator,
     dispatch
   );
-  const { searchInput } = useSelector(
-    (state: RootStateOrAny) => state.inventory
-  );
+  const { searchInput } = useAppSelector((state: RootState) => state.inventory);
+
   const navigate = useNavigate();
 
   const onEnterButton = (e: any) => {

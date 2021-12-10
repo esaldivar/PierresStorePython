@@ -1,19 +1,22 @@
-import { useAppSelector, RootState } from '../types/reduxTypes';
 import FavoriteBtn from './FavoriteBtn';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
 import { Categories } from '../utilities/categoryImages';
 import { Seasons } from '../utilities/seasonalData';
 import PierreButton from './AddToCardBtn';
+import { singleResult } from '../types/storeTypes';
 
-const ProductCard = () => {
-  const { singleResult } = useAppSelector(
-    (state: RootState) => state.inventory
-  );
-
-  const productNameFormatted = upperCaseFirstChar(singleResult.productName);
+const ProductCard = ({
+  productName,
+  imageUrl,
+  price,
+  category,
+  information,
+  season,
+}: singleResult) => {
+  const productNameFormatted = upperCaseFirstChar(productName);
 
   return (
-    <div className="bg-white bg-opacity-50 rounded searchBorder">
+    <div className="bg-white bg-opacity-50 rounded searchBorder ">
       <div className="flex w-full px-2 py-2 bg-greenTitle">
         <FavoriteBtn />
         <h1 className="w-11/12 py-2 text-lg text-center justify-self-center">
@@ -22,30 +25,25 @@ const ProductCard = () => {
       </div>
 
       <div className="flex m-auto">
-        <div className="flex flex-col w-1/3 px-6 py-4 m-auto align-middle bg-opacity-75 border-r-2 border-primary">
-          <img
-            className="h-auto mb-2"
-            src={singleResult.imageUrl}
-            alt={singleResult.productName}
-          />
-          <div className="flex items-center">
-            <h2 className="text-center">
-              {numberWithCommas(singleResult.price)}
-            </h2>
-            <img
-              className="w-1/3 item-bottom"
-              src="https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png"
-              alt="gold coin"
-              title="gold coin"
-            />
-          </div>
-        </div>
         <div className="flex-col px-6 py-4 bg-opacity-75">
+          <div className="flex-col float-left mr-4">
+            <img className="h-1/4" src={imageUrl} alt={productName} />
+            <div className="flex mt-4">
+              <h2 className="text-center">{numberWithCommas(price)}</h2>
+              <img
+                className="w-5 h-5 item-bottom"
+                src="https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png"
+                alt="gold coin"
+                title="gold coin"
+              />
+            </div>
+          </div>
+
           <div className="flex-row">
             <p className="flex font-bold">
               Categories:{' '}
-              {singleResult.category.length > 0 ? (
-                singleResult.category.map((el: string, index: number) => {
+              {category.length > 0 ? (
+                category.map((el: string, index: number) => {
                   if (Categories[el]) {
                     return (
                       <img
@@ -66,8 +64,8 @@ const ProductCard = () => {
           <div className="flex-row">
             <p className="flex font-bold ">
               Seasons:{' '}
-              {singleResult.season[0] !== '' ? (
-                singleResult.season.map((el: string, index: number) => {
+              {season ? (
+                season?.map((el: string, index: number) => {
                   if (Seasons[el.toLowerCase()]) {
                     return (
                       <img
@@ -86,7 +84,7 @@ const ProductCard = () => {
             </p>
           </div>
 
-          <p className="italic">{singleResult.information}</p>
+          <p className="italic">{information}</p>
         </div>
       </div>
       <div className="flex mt-4 mb-4">
