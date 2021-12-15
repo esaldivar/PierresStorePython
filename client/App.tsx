@@ -2,7 +2,7 @@ import './style.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import store from './redux/store';
-import NavBar from './views/Navbar';
+import NavBar from './views/NavBar';
 import SearchResult from './views/SearchResult';
 import InventoryHome from './views/InventoryHome';
 import Seasonal from './views/Seasonal';
@@ -16,7 +16,7 @@ export const App = () => {
           <Routes>
             <Route index element={<InventoryHome />} />
             <Route path="search" element={<SearchResult />} />
-            <Route path="/seasonal" element={<Seasonal />} />
+            <Route path="season" element={<Seasonal />} />
           </Routes>
         </Provider>
       </Router>

@@ -19,7 +19,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="text-3xl">
-        <Link to="seasonal">
+        <Link to="season">
           <h4>In Season</h4>
         </Link>
       </div>
