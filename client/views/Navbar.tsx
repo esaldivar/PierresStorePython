@@ -14,9 +14,9 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="text-3xl">
-        <a href="https://github.com/esaldivar/PierresStore/blob/main/server/models/store.sql">
+        <Link to="/">
           <h4>Favorites</h4>
-        </a>
+        </Link>
       </div>
       <div className="text-3xl">
         <Link to="seasonal">
@@ -25,12 +25,12 @@ const NavBar = () => {
       </div>
       <Searchbar />
       <div className="w-32">
-        <a href="https://sass-lang.com">
+        <Link to="/">
           <img
             src="https://pierresstore.s3.us-east-2.amazonaws.com/Traveling_Cart.png"
             alt="Shopping Cart Icon"
           />
-        </a>
+        </Link>
       </div>
     </div>
   );

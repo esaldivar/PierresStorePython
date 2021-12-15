@@ -9,11 +9,11 @@ import {render, fireEvent, waitFor, screen} from 'test-utils';
 import '@testing-library/jest-dom'
 
 
-test('find h1 with text of hello aurora', async () => {
+test('find text of Amaranth seeds', async () => {
     // Arrange
     render(<App />)
     // Act
     // Assert
-    expect(screen.getByText('Hello from Auroraa'))
+    expect(screen.getByText('Item Description'))
 
   })
