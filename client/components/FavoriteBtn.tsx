@@ -14,10 +14,7 @@ const FavoriteBtn = () => {
   };
 
   return (
-    <button
-      className="w-10 h-10 text-xs bg-white border-2 rounded-full border-primary"
-      onClick={changeHeart}
-    >
+    <button className="w-10 h-10 text-xs" onClick={changeHeart}>
       {toggleState === true ? (
         <FontAwesomeIcon
           className="text-red-600 fill-current"
@@ -26,7 +23,7 @@ const FavoriteBtn = () => {
         />
       ) : (
         <FontAwesomeIcon
-          className="text-gray-300 fill-current hover:text-red-600"
+          className="text-red-600 fill-current hover:text-red-600"
           icon={farHeart}
           size="2x"
         />

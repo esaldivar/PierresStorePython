@@ -34,6 +34,13 @@ export default function reducer(state = initalState, action: AnyAction) {
         store: action.payload,
       };
     }
+    case 'SORTSTORE': {
+      return {
+        ...state,
+        store: action.payload,
+      };
+    }
+
     default:
       return state;
   }

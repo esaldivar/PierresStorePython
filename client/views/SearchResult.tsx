@@ -1,14 +1,26 @@
-import { RootStateOrAny, useSelector } from 'react-redux';
 import ProductCard from '../components/ProductCard';
+import { useAppSelector, RootState } from '../types/reduxTypes';
 
 const SearchResult = () => {
-  const { singleResult } = useSelector(
-    (state: RootStateOrAny) => state.inventory
+  const { singleResult } = useAppSelector(
+    (state: RootState) => state.inventory
   );
 
   return (
-    <div className="flex w-1/3 m-auto center">
-      {singleResult.productName.length > 0 && <ProductCard />}
+    <div className="flex items-center justify-center w-2/4 m-auto">
+      {singleResult ? (
+        <ProductCard
+          productName={singleResult.productName}
+          imageUrl={singleResult.imageUrl}
+          price={singleResult.price}
+          category={singleResult.category}
+          information={singleResult.information}
+          season={singleResult.season}
+          quantity={singleResult.quantity}
+        />
+      ) : (
+        <h1>No results.</h1>
+      )}
     </div>
   );
 };

@@ -20,3 +20,16 @@ export interface seasonImages {
   fall: string;
   winter: string;
 }
+
+export interface seasonalDetails {
+  [index: string]: string;
+  tree: string;
+}
+
+export interface seasonInfo {
+  [index: string]: seasonalDetails;
+}
+
+export interface seasonProp {
+  currentSeason: string;
+}
