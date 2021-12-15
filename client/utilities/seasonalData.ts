@@ -1,4 +1,4 @@
-import { seasonImages } from '../types/utilityTypes';
+import { seasonImages, seasonInfo } from '../types/utilityTypes';
 
 export const Seasons: seasonImages = {
   spring: 'https://stardewvalleywiki.com/mediawiki/images/c/cf/Tulip.png',
@@ -21,4 +21,19 @@ export const seasonSetter = (): string => {
   } else {
     return 'Winter';
   }
+};
+
+export const SeasonalInformation: seasonInfo = {
+  spring: {
+    tree: 'https://pierresstore.s3.us-east-2.amazonaws.com/winter_tree-removebg-preview.png',
+  },
+  summer: {
+    tree: 'https://pierresstore.s3.us-east-2.amazonaws.com/winter_tree-removebg-preview.png',
+  },
+  fall: {
+    tree: 'https://pierresstore.s3.us-east-2.amazonaws.com/winter_tree-removebg-preview.png',
+  },
+  winter: {
+    tree: 'https://pierresstore.s3.us-east-2.amazonaws.com/winter_tree-removebg-preview.png',
+  },
 };

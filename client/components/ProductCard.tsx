@@ -40,7 +40,7 @@ const ProductCard = ({
           </div>
 
           <div className="flex-row">
-            <p className="flex font-bold">
+            <p className="flex flex-wrap font-bold">
               Categories:{' '}
               {category.length > 0 ? (
                 category.map((el: string, index: number) => {

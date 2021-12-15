@@ -7,7 +7,7 @@ const SearchResult = () => {
   );
 
   return (
-    <div className="flex items-center justify-center w-1/4 m-auto">
+    <div className="flex items-center justify-center w-2/4 m-auto">
       {singleResult ? (
         <ProductCard
           productName={singleResult.productName}

@@ -8,6 +8,8 @@ import { Seasons, seasonSetter } from '../utilities/seasonalData';
 import { getAllProducts } from '../utilities/queries';
 import { initialAlpha } from '../utilities/helperFuncs';
 import ProductCard from '../components/ProductCard';
+import SeasonalInfo from '../components/SeasonalInfo';
+
 const Seasonal = () => {
   //detects the month and returns the season
   const dispatch = useAppDispatch();
@@ -28,8 +30,10 @@ const Seasonal = () => {
       });
   }, []);
   const season = seasonSetter();
+
   return (
-    <div className="flex justify-center w-3/4 m-auto">
+    <div className="flex-col justify-center w-4/5 m-auto mb-6">
+      <SeasonalInfo currentSeason={season} />
       <div className="flex-col w-10/12 px-2 m-auto">
         <p>Seasonal Products</p>
         <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-3 gap-2">
