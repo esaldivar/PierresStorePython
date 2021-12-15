@@ -1,6 +1,5 @@
 import { SeasonalInformation } from '../utilities/seasonalData';
 import { seasonProp } from '../types/utilityTypes';
-import { upperCaseFirstChar } from '../utilities/helperFuncs';
 const SeasonalInfo = (currentSeason: seasonProp) => {
   const season: string = currentSeason.currentSeason.toLowerCase();
 
