@@ -4,7 +4,7 @@ import { inventoryActionCreator } from '../redux/actionReferences';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { singleResult } from '../types/storeTypes';
-import { Seasons, seasonSetter } from '../utilities/seasonalData';
+import { seasonSetter } from '../utilities/seasonalData';
 import { getAllProducts } from '../utilities/queries';
 import { initialAlpha } from '../utilities/helperFuncs';
 import ProductCard from '../components/ProductCard';
