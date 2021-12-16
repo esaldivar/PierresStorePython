@@ -32,7 +32,7 @@ const Product = ({
       <div className="flex w-2/12 ">
         <Link
           onClick={() => {
-            setProduct(productName);
+            setProduct(upperCaseFirstChar(productName));
           }}
           to={`productdetails/${productName.toLowerCase()}`}
         >

@@ -18,11 +18,11 @@ export const App = () => {
           <NavBar />
           <Routes>
             <Route index element={<InventoryHome />} />
-            <Route path="productdetails" element={<ProductDetails />}>
+            <Route path="/productdetails" element={<ProductDetails />}>
               <Route path=":productName" element={<ProductDetailsInfo />} />
             </Route>
-            <Route path="search" element={<SearchResult />} />
-            <Route path="season" element={<Seasonal />}>
+            <Route path=":productName" element={<SearchResult />} />
+            <Route path="/season" element={<Seasonal />}>
               <Route path=":seasonName" element={<SeasonalInfo />} />
             </Route>
           </Routes>

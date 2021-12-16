@@ -29,7 +29,7 @@ const SearchBar = () => {
           if (product.productName.length > 0) {
             searchView(product);
             search('');
-            navigate('search');
+            navigate(`${product.productName}`);
           }
         })
         .catch(console.error);
