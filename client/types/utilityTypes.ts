@@ -34,5 +34,5 @@ export interface seasonInfo {
 }
 
 export interface seasonProp {
-  currentSeason: string;
+  currentSeason?: string;
 }

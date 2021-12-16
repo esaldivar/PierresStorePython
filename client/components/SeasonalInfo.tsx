@@ -3,7 +3,10 @@ import { seasonProp } from '../types/utilityTypes';
 import { upperCaseFirstChar } from '../utilities/helperFuncs';
 
 const SeasonalInfo = (currentSeason: seasonProp) => {
-  const season: string = currentSeason.currentSeason.toLowerCase();
+  const season: string =
+    currentSeason.currentSeason !== undefined
+      ? currentSeason.currentSeason.toLowerCase()
+      : 'spring';
   const festivals: string[] = SeasonalInformation[season].festivals;
   console.log(festivals);
 

@@ -12,6 +12,7 @@ const initalState: inventory = {
     quantity: '',
   },
   store: [],
+  currentProduct: '',
 };
 
 export default function reducer(state = initalState, action: AnyAction) {
@@ -38,6 +39,13 @@ export default function reducer(state = initalState, action: AnyAction) {
       return {
         ...state,
         store: action.payload,
+      };
+    }
+
+    case 'PRODUCTVIEW': {
+      return {
+        ...state,
+        currentProduct: action.payload,
       };
     }
 

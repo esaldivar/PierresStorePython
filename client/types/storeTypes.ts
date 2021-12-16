@@ -12,6 +12,7 @@ export interface inventory {
   searchInput: string;
   singleResult: singleResult;
   store: singleResult[];
+  currentProduct: string;
 }
 
 export type Stores = singleResult[];

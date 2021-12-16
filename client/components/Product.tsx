@@ -1,8 +1,12 @@
+import { useAppDispatch } from '../types/reduxTypes';
+import { bindActionCreators } from 'redux';
+import { inventoryActionCreator } from '../redux/actionReferences';
 import { singleResult } from '../types/storeTypes';
 import PierreButton from './AddToCardBtn';
 import FavoriteBtn from './FavoriteBtn';
 import { Seasons } from '../utilities/seasonalData';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
+import { Link } from 'react-router-dom';
 
 const Product = ({
   productName,
@@ -11,6 +15,9 @@ const Product = ({
   season,
   price,
 }: singleResult) => {
+  const dispatch = useAppDispatch();
+  const { setProduct } = bindActionCreators(inventoryActionCreator, dispatch);
+
   return (
     <div className="flex items-center px-2 py-4 m-auto border-b-2 border-primary">
       <div className="flex w-2/12">
@@ -23,7 +30,14 @@ const Product = ({
         />
       </div>
       <div className="flex w-2/12 ">
-        <h2 className="m-auto">{upperCaseFirstChar(productName)}</h2>
+        <Link
+          onClick={() => {
+            setProduct(productName);
+          }}
+          to={`productdetails/${productName.toLowerCase()}`}
+        >
+          <h2 className="m-auto">{upperCaseFirstChar(productName)}</h2>
+        </Link>
       </div>
       <div className="flex items-center w-3/12 ">
         <p className="m-auto italic text-center">{information}</p>
