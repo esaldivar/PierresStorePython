@@ -22,8 +22,11 @@ export interface seasonImages {
 }
 
 export interface seasonalDetails {
-  [index: string]: string;
+  [index: string]: string | string[];
   tree: string;
+  avatar: string;
+  article: string;
+  festivals: string[];
 }
 
 export interface seasonInfo {

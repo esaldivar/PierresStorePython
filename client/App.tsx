@@ -6,6 +6,7 @@ import NavBar from './views/NavBar';
 import SearchResult from './views/SearchResult';
 import InventoryHome from './views/InventoryHome';
 import Seasonal from './views/Seasonal';
+import SeasonalInfo from './components/SeasonalInfo';
 
 export const App = () => {
   return (
@@ -16,7 +17,9 @@ export const App = () => {
           <Routes>
             <Route index element={<InventoryHome />} />
             <Route path="search" element={<SearchResult />} />
-            <Route path="season" element={<Seasonal />} />
+            <Route path="season" element={<Seasonal />}>
+              <Route path=":seasonName" element={<SeasonalInfo />} />
+            </Route>
           </Routes>
         </Provider>
       </Router>

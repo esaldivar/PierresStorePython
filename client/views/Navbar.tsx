@@ -1,7 +1,9 @@
 import Searchbar from '../components/Searchbar';
 import { Link } from 'react-router-dom';
+import { seasonSetter } from '../utilities/seasonalData';
 
 const NavBar = () => {
+  const season = seasonSetter();
   return (
     <div className="sticky flex items-center mt-2 justify-evenly text-primary">
       <div className="flex items-center">
@@ -19,7 +21,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="text-3xl">
-        <Link to="season">
+        <Link to={`season/${season.toLowerCase()}`}>
           <h4>In Season</h4>
         </Link>
       </div>
