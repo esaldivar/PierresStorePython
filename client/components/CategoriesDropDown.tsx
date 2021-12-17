@@ -1,7 +1,13 @@
 import Dropdown from 'react-bootstrap/Dropdown';
+import { bindActionCreators } from 'redux';
+import { layoutActionCreator } from '../redux/actionReferences';
+import { useAppDispatch } from '../types/reduxTypes';
 import { Link } from 'react-router-dom';
 
 const CategoeriesDropDown = () => {
+  const dispatch = useAppDispatch();
+  const { setCategory } = bindActionCreators(layoutActionCreator, dispatch);
+
   const categories: string[] = [
     'Favorites',
     'Cooking',
@@ -36,7 +42,10 @@ const CategoeriesDropDown = () => {
                 className="py-0 m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
                 key={`dropdownitem${el}${index}`}
                 as={Link}
-                to="/"
+                to={`category/${el}`}
+                onClick={() => {
+                  setCategory(el);
+                }}
               >
                 {el}
               </Dropdown.Item>
@@ -47,7 +56,10 @@ const CategoeriesDropDown = () => {
                 className="py-0 m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
                 key={`dropdownitem${el}${index}`}
                 as={Link}
-                to="/"
+                to={`category/${el}`}
+                onClick={() => {
+                  setCategory(el);
+                }}
               >
                 {el}
 

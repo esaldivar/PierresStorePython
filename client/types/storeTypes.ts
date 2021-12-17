@@ -18,5 +18,5 @@ export interface inventory {
 export type Stores = singleResult[];
 
 export interface layout {
-  showCats: boolean;
+  currentCategory: string;
 }

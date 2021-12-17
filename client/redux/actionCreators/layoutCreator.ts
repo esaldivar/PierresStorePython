@@ -1,9 +1,9 @@
 import { AppDispatch } from '../../types/reduxTypes';
 
-export const toggleCats = (input: boolean) => {
+export const setCategory = (input: string) => {
   return (dispatch: AppDispatch) => {
     dispatch({
-      type: 'SHOWCATS',
+      type: 'SETCAT',
       payload: input,
     });
   };

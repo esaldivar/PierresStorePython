@@ -10,6 +10,8 @@ import Seasonal from './views/Seasonal';
 import SeasonalInfo from './components/SeasonalInfo';
 import ProductDetails from './views/ProductDetails';
 import ProductDetailsInfo from './components/ProductDetailsInfo';
+import Categories from './views/Categories';
+import SpecificCategory from './components/SpecificCategory';
 
 export const App = () => {
   return (
@@ -21,6 +23,9 @@ export const App = () => {
             <Route index element={<InventoryHome />} />
             <Route path="/productdetails" element={<ProductDetails />}>
               <Route path=":productName" element={<ProductDetailsInfo />} />
+            </Route>
+            <Route path="/category" element={<Categories />}>
+              <Route path=":category" element={<SpecificCategory />} />
             </Route>
             <Route path=":productName" element={<SearchResult />} />
             <Route path="/season" element={<Seasonal />}>

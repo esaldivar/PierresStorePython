@@ -26,7 +26,7 @@ const NavBar = () => {
         </Link>
       </div>
       <Searchbar />
-      <div className="flex items-center align-middle">
+      <div className="flex items-center align-middle ">
         <UserNav />
         <div className="w-32">
           <Link to="/">

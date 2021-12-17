@@ -2,15 +2,15 @@ import { AnyAction } from 'redux';
 import { layout } from '../../types/storeTypes';
 
 const initalState: layout = {
-  showCats: false,
+  currentCategory: '',
 };
 
 export default function reducer(state = initalState, action: AnyAction) {
   switch (action.type) {
-    case 'SHOWCATS': {
+    case 'SETCAT': {
       return {
         ...state,
-        showCats: action.payload,
+        currentCategory: action.payload,
       };
     }
 
