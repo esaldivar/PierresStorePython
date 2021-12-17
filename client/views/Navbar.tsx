@@ -1,11 +1,12 @@
 import Searchbar from '../components/Searchbar';
 import { Link } from 'react-router-dom';
 import { seasonSetter } from '../utilities/seasonalData';
+import CategoeriesDropDown from '../components/CategoriesDropDown';
 
 const NavBar = () => {
   const season = seasonSetter();
   return (
-    <div className="sticky flex items-center mt-2 justify-evenly text-primary">
+    <div className="sticky flex items-center mt-2 mb-10 justify-evenly text-primaryBrown">
       <div className="flex items-center">
         <Link to="/">
           <img
@@ -16,9 +17,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="text-3xl">
-        <Link to="/">
-          <h4>Favorites</h4>
-        </Link>
+        <CategoeriesDropDown />
       </div>
       <div className="text-3xl">
         <Link to={`season/${season.toLowerCase()}`}>
