@@ -8,7 +8,6 @@ const SeasonalInfo = (currentSeason: seasonProp) => {
       ? currentSeason.currentSeason.toLowerCase()
       : 'spring';
   const festivals: string[] = SeasonalInformation[season].festivals;
-  console.log(festivals);
 
   return (
     <div className="flex-col items-center w-10/12 m-auto rounded searchBorder">

@@ -28,21 +28,17 @@ const CategoeriesDropDown = () => {
         Categories
       </Dropdown.Toggle>
 
-      <Dropdown.Menu className=" w-full h-64 py-0 mt-2.5 overflow-y-auto bg-lightBrown text-greenTitle">
+      <Dropdown.Menu className="w-full h-64 py-0 overflow-y-auto bg-lightBrown text-greenTitle">
         {categories.map((el, index) => {
           if (index === categories.length - 1) {
             return (
               <Dropdown.Item
                 className="py-0 m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
                 key={`dropdownitem${el}${index}`}
+                as={Link}
+                to="/"
               >
-                <Link
-                  to="/"
-                  className="py-0 m-auto hover:text-white"
-                  key={`link${el}${index}`}
-                >
-                  {el}
-                </Link>
+                {el}
               </Dropdown.Item>
             );
           } else {
@@ -50,14 +46,11 @@ const CategoeriesDropDown = () => {
               <Dropdown.Item
                 className="py-0 m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
                 key={`dropdownitem${el}${index}`}
+                as={Link}
+                to="/"
               >
-                <Link
-                  to="/"
-                  className="py-0 m-auto hover:text-white"
-                  key={`link${el}${index}`}
-                >
-                  {el}
-                </Link>
+                {el}
+
                 <Dropdown.Divider
                   className="py-0 m-auto"
                   key={`divider${el}${index}`}
