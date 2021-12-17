@@ -23,11 +23,12 @@ const CategoeriesDropDown = () => {
       <Dropdown.Toggle
         variant="success"
         id="dropdown-basic"
-        className="text-3xl bg-transparent border-0 outline-none text-primaryBrown "
+        className="text-3xl bg-transparent border-none text-primaryBrown"
       >
         Categories
       </Dropdown.Toggle>
-      <Dropdown.Menu className="w-full h-64 py-0 overflow-y-auto bg-lightBrown text-greenTitle">
+
+      <Dropdown.Menu className=" w-full h-64 py-0 mt-2.5 overflow-y-auto bg-lightBrown text-greenTitle">
         {categories.map((el, index) => {
           if (index === categories.length - 1) {
             return (
