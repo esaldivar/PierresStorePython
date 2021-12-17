@@ -27,26 +27,43 @@ const CategoeriesDropDown = () => {
       >
         Categories
       </Dropdown.Toggle>
-      <Dropdown.Menu className="w-32 h-64 py-0 overflow-y-auto bg-lightBrown text-greenTitle">
+      <Dropdown.Menu className="w-full h-64 py-0 overflow-y-auto bg-lightBrown text-greenTitle">
         {categories.map((el, index) => {
-          return (
-            <Dropdown.Item
-              className="py-0 m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
-              key={`dropdownitem${el}${index}`}
-            >
-              <Link
-                to="/"
-                className="py-0 m-auto hover:text-white"
-                key={`link${el}${index}`}
+          if (index === categories.length - 1) {
+            return (
+              <Dropdown.Item
+                className="py-0 m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
+                key={`dropdownitem${el}${index}`}
               >
-                {el}
-              </Link>
-              <Dropdown.Divider
-                className="py-0 m-auto"
-                key={`divider${el}${index}`}
-              />
-            </Dropdown.Item>
-          );
+                <Link
+                  to="/"
+                  className="py-0 m-auto hover:text-white"
+                  key={`link${el}${index}`}
+                >
+                  {el}
+                </Link>
+              </Dropdown.Item>
+            );
+          } else {
+            return (
+              <Dropdown.Item
+                className="py-0 m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
+                key={`dropdownitem${el}${index}`}
+              >
+                <Link
+                  to="/"
+                  className="py-0 m-auto hover:text-white"
+                  key={`link${el}${index}`}
+                >
+                  {el}
+                </Link>
+                <Dropdown.Divider
+                  className="py-0 m-auto"
+                  key={`divider${el}${index}`}
+                />
+              </Dropdown.Item>
+            );
+          }
         })}
       </Dropdown.Menu>
     </Dropdown>
