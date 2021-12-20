@@ -51,7 +51,6 @@ const SearchBar = () => {
         placeholder="Search Pierre's Store"
         id="searchInput"
         autoComplete="off"
-        value={searchInput}
         onChange={(e) => {
           search(e.target.value);
         }}

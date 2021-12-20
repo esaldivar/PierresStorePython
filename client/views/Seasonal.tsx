@@ -35,7 +35,7 @@ const Seasonal = () => {
     <div className="flex-col justify-center w-4/5 m-auto mb-6">
       <SeasonalInfo currentSeason={season} />
       <div className="flex-col w-10/12 px-2 m-auto mt-6">
-        <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-3 gap-2">
+        <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-3 gap-2 mt-6">
           {store ? (
             store.map((product: singleResult, index: number) => {
               if (product.season?.includes(season)) {

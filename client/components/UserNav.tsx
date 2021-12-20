@@ -28,23 +28,39 @@ const UserNav = () => {
       <Dropdown.Menu className="w-full py-0 overflow-y-auto bg-lightBrown text-greenTitle">
         {signInOptions.map((el, index) => {
           if (index === signInOptions.length - 1) {
+            const linkDetails = el
+              .split(' ')
+              .filter((str) => {
+                return str !== '';
+              })
+              .join('')
+              .toLowerCase();
+            console.log(linkDetails);
             return (
               <Dropdown.Item
                 className="m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
                 key={`dropdownitem${el}${index}`}
                 as={Link}
-                to="/"
+                to={`/${linkDetails}`}
               >
                 {el}
               </Dropdown.Item>
             );
           } else {
+            const linkDetails = el
+              .split(' ')
+              .filter((str) => {
+                return str !== '';
+              })
+              .join('')
+              .toLowerCase();
+            console.log(linkDetails);
             return (
               <Dropdown.Item
                 className="m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
                 key={`dropdownitem${el}${index}`}
                 as={Link}
-                to="/"
+                to={`/${linkDetails}`}
               >
                 {el}
 
