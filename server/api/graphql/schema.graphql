@@ -51,7 +51,7 @@ type Query {
     products: ProductsResult!
     product(productName: String): ProductResult!
     users: UsersResult!
-    user(emailAddress: String): UserResult!
+    user(emailAddress: String, password: String): UserResult!
 }
 
 type DeleteProductResult {

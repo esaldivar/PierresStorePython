@@ -71,9 +71,10 @@ def resolve_delete_product(obj, info, product_id):
 def resolve_create_user(obj, info, first_name, last_name, email_address, phone_number, password):
     try:
         byte_password = bytes(password, encoding= 'utf-8')
-        salt = bcrypt.gensalt(10)
+        salt = bcrypt.gensalt(12)
         pw_hash = bcrypt.hashpw(byte_password, salt)
-        user = Users(first_name=first_name, last_name=last_name, email_address=email_address, phone_number=phone_number, password=pw_hash)
+        decoded_pw = pw_hash.decode()
+        user = Users(first_name=first_name, last_name=last_name, email_address=email_address, phone_number=phone_number, password=decoded_pw)
         db.session.add(user)
         db.session.commit()
         payload = {
