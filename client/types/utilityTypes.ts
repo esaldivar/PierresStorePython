@@ -1,3 +1,11 @@
+export interface accountInfoType {
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  phoneNumber: string;
+  password: string;
+}
+
 export interface categoryImages {
   [index: string]: string;
   cooking: string;

@@ -33,3 +33,37 @@ export const getAllProducts = (): string => {
   }
 }`;
 };
+
+export const getUser = (client: string): string => {
+  return `query fetchUser {
+    user(emailAddress:"${client}") {
+      success
+      errors
+      user { 
+      id
+      firstName
+      lastName
+      phoneNumber
+      emailAddress
+      password
+      }
+    }
+  }`;
+};
+
+export const getAllUsers = (): string => {
+  return `query fetchAllUsers {
+    users {
+      success
+      errors
+      users { 
+      id
+      firstName
+      lastName
+      phoneNumber
+      emailAddress
+      password
+      }
+    }
+  }`;
+};
