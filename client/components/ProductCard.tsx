@@ -1,9 +1,13 @@
+import { useAppDispatch } from '../types/reduxTypes';
+import { bindActionCreators } from 'redux';
+import { inventoryActionCreator } from '../redux/actionReferences';
 import FavoriteBtn from './FavoriteBtn';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
 import { Categories } from '../utilities/categoryImages';
 import { Seasons } from '../utilities/seasonalData';
 import PierreButton from './AddToCardBtn';
 import { singleResult } from '../types/storeTypes';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({
   productName,
@@ -13,15 +17,23 @@ const ProductCard = ({
   information,
   season,
 }: singleResult) => {
+  const dispatch = useAppDispatch();
+  const { setProduct } = bindActionCreators(inventoryActionCreator, dispatch);
   const productNameFormatted = upperCaseFirstChar(productName);
 
   return (
     <div className="flex-col bg-white bg-opacity-50 rounded searchBorder ">
       <div className="flex w-full px-2 py-2 bg-greenTitle h-1/5">
         <FavoriteBtn />
-        <h1 className="w-11/12 py-2 text-lg text-center justify-self-center">
-          {productNameFormatted}
-        </h1>
+        <Link
+          className="w-11/12 py-2 text-lg text-center justify-self-center"
+          onClick={() => {
+            setProduct(productNameFormatted);
+          }}
+          to={`/productdetails/${productName}`}
+        >
+          <h1>{productNameFormatted}</h1>
+        </Link>
       </div>
 
       <div className="flex h-3/5">

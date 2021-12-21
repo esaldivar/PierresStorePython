@@ -1,11 +1,19 @@
 import './style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import store from './redux/store';
-import NavBar from './views/NavBar';
+import NavBar from './views/Navbar';
 import SearchResult from './views/SearchResult';
 import InventoryHome from './views/InventoryHome';
 import Seasonal from './views/Seasonal';
+import SeasonalInfo from './components/SeasonalInfo';
+import ProductDetails from './views/ProductDetails';
+import ProductDetailsInfo from './components/ProductDetailsInfo';
+import Categories from './views/Categories';
+import SpecificCategory from './components/SpecificCategory';
+import AccountCreation from './views/AccountCreation';
+import SignIn from './views/SignIn';
 
 export const App = () => {
   return (
@@ -15,8 +23,18 @@ export const App = () => {
           <NavBar />
           <Routes>
             <Route index element={<InventoryHome />} />
-            <Route path="search" element={<SearchResult />} />
-            <Route path="season" element={<Seasonal />} />
+            <Route path="/createaccount" element={<AccountCreation />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/productdetails" element={<ProductDetails />}>
+              <Route path=":productName" element={<ProductDetailsInfo />} />
+            </Route>
+            <Route path="/category" element={<Categories />}>
+              <Route path=":category" element={<SpecificCategory />} />
+            </Route>
+            <Route path=":productName" element={<SearchResult />} />
+            <Route path="/season" element={<Seasonal />}>
+              <Route path=":seasonName" element={<SeasonalInfo />} />
+            </Route>
           </Routes>
         </Provider>
       </Router>

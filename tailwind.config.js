@@ -7,14 +7,15 @@ module.exports = {
     },
     extend: {
       colors: {
-        'primary': '#E0A100',
+        'primaryBrown': '#E0A100',
         'lightBrown': '#f0d797',
         'greenTitle': '#03A007'
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [],
 }

@@ -1,3 +1,11 @@
+export interface accountInfoType {
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  phoneNumber: string;
+  password: string;
+}
+
 export interface categoryImages {
   [index: string]: string;
   cooking: string;
@@ -22,8 +30,11 @@ export interface seasonImages {
 }
 
 export interface seasonalDetails {
-  [index: string]: string;
+  [index: string]: string | string[];
   tree: string;
+  avatar: string;
+  article: string;
+  festivals: string[];
 }
 
 export interface seasonInfo {
@@ -31,5 +42,5 @@ export interface seasonInfo {
 }
 
 export interface seasonProp {
-  currentSeason: string;
+  currentSeason?: string;
 }

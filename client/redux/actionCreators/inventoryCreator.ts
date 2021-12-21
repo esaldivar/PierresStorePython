@@ -36,3 +36,12 @@ export const sortInventory = (input: Stores) => {
     });
   };
 };
+
+export const setProduct = (input: string) => {
+  return (dispatch: AppDispatch) => {
+    dispatch({
+      type: 'PRODUCTVIEW',
+      payload: input,
+    });
+  };
+};

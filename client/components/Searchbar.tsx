@@ -29,7 +29,7 @@ const SearchBar = () => {
           if (product.productName.length > 0) {
             searchView(product);
             search('');
-            navigate('search');
+            navigate(`${product.productName}`);
           }
         })
         .catch(console.error);
@@ -51,7 +51,6 @@ const SearchBar = () => {
         placeholder="Search Pierre's Store"
         id="searchInput"
         autoComplete="off"
-        value={searchInput}
         onChange={(e) => {
           search(e.target.value);
         }}

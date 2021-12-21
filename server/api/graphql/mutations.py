@@ -1,9 +1,9 @@
 from datetime import datetime
-
+import bcrypt
 from ariadne import convert_kwargs_to_snake_case
 
 from api import db
-from api.database.models import Products
+from api.database.models import Products, Users
 
 @convert_kwargs_to_snake_case
 def resolve_create_product(obj, info, product_name, image_url, price, information, season, category, quantity):
@@ -66,3 +66,24 @@ def resolve_delete_product(obj, info, product_id):
 #             "errors": [f"Todo matching id {todo_id} not found"]
 #         }
 #     return payload
+
+@convert_kwargs_to_snake_case
+def resolve_create_user(obj, info, first_name, last_name, email_address, phone_number, password):
+    try:
+        byte_password = bytes(password, encoding= 'utf-8')
+        salt = bcrypt.gensalt(10)
+        pw_hash = bcrypt.hashpw(byte_password, salt)
+        user = Users(first_name=first_name, last_name=last_name, email_address=email_address, phone_number=phone_number, password=pw_hash)
+        db.session.add(user)
+        db.session.commit()
+        payload = {
+            "success": True,
+            "user": user.to_dict()
+        }
+    except ValueError:  # product format errors
+        payload = {
+            "success": False,
+            "errors": [f"Incorrectly added product.  Please try again."]
+        }
+
+    return payload
