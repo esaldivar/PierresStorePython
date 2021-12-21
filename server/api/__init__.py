@@ -7,7 +7,7 @@ load_dotenv()
 
 app = Flask(__name__, static_url_path='', static_folder='../../dist')
 CORS(app)
-app.config["SQLALCHEMY_DATABASE_URI"] = f'{os.getenv("POSTGRESQL_URI")}'
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://hirdyvap:6RNpeOA1abToBmRn4kylDa6CA4cuilHj@chunee.db.elephantsql.com/hirdyvap"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
