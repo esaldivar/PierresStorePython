@@ -6,6 +6,11 @@ export interface accountInfoType {
   password: string;
 }
 
+export interface loginInfoType {
+  emailAddress: string;
+  password: string;
+}
+
 export interface categoryImages {
   [index: string]: string;
   cooking: string;

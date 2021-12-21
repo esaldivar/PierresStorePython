@@ -36,7 +36,7 @@ export const getAllProducts = (): string => {
 
 export const getUser = (client: string, password: string): string => {
   return `query fetchUser {
-    user(emailAddress:"${client}", password:"${password}) {
+    user(emailAddress:"${client}", password:"${password}") {
       success
       errors
       user { 
@@ -45,7 +45,6 @@ export const getUser = (client: string, password: string): string => {
       lastName
       phoneNumber
       emailAddress
-      password
       }
     }
   }`;
