@@ -49,3 +49,12 @@ export interface seasonInfo {
 export interface seasonProp {
   currentSeason?: string;
 }
+
+export interface favoriteProp {
+  product?: string;
+}
+
+export interface toggleFav {
+  toggle: boolean;
+  product: string;
+}

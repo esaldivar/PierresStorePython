@@ -14,8 +14,6 @@ const Favorites = () => {
   );
   const { setFavorites } = bindActionCreators(inventoryActionCreator, dispatch);
   const [favoriteList, setFavoriteList] = useState<string[]>([]);
-
-  const favoriteArray: string[] = [];
   const filteredArray: any = [];
 
   const objectCheck = (object: any, arrayofFavs: string[]): boolean => {
@@ -32,13 +30,12 @@ const Favorites = () => {
         query: getFavorites(userId),
       })
       .then((res) => {
-        const favorite = res.data.data.favorites.favorites;
-        for (let i = 0; i < favorite.length; i++) {
-          favoriteArray.push(favorite[i].productName);
-        }
-        setFavoriteList(favorites);
+        const favorite = res.data.data.favorites.favorites.map((el: any) => {
+          return el.productName;
+        });
+        setFavoriteList(favorite);
         for (let i = 0; i < store.length; i++) {
-          if (objectCheck(store[i], favoriteArray)) {
+          if (objectCheck(store[i], favoriteList)) {
             filteredArray.push(store[i]);
           }
         }

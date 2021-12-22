@@ -8,3 +8,12 @@ export const setCategory = (input: string) => {
     });
   };
 };
+
+export const changeFavs = (input: string[]) => {
+  return (dispatch: AppDispatch) => {
+    dispatch({
+      type: 'CHANGEFAVS',
+      payload: input,
+    });
+  };
+};

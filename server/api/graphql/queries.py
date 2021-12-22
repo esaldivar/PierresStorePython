@@ -84,7 +84,6 @@ def resolve_favorites(obj, info, user_id):
         filtered_favorites = []
         for favorite in favorites:
             if favorite['user_id'] == user_id:
-                print('searching for favs')
                 filtered_favorites.append(favorite)
         
         payload = {

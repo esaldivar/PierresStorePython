@@ -1,10 +1,39 @@
-import { useState } from 'react';
+import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
+import { bindActionCreators } from 'redux';
+import { layoutActionCreator } from '../redux/actionReferences';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { addFavorite } from '../utilities/mutations';
+import axios from 'axios';
+import { toggleFav, favoriteProp } from '../types/utilityTypes';
 
-const FavoriteBtn = () => {
+const FavoriteBtn = (toggle: toggleFav, product: favoriteProp) => {
+  const { heartedFavs } = useAppSelector((state: RootState) => state.layout);
+  const dispatch = useAppDispatch();
+  const { changeFavs } = bindActionCreators(layoutActionCreator, dispatch);
   const [toggleState, changeToggle] = useState<boolean>(false);
+  const userId: number | null = localStorage.getItem('userId')
+    ? parseInt(localStorage.getItem('userId'))
+    : null;
+  const currentProduct = toggle.product;
+
+  const setFavorite = (uId: number, product: string) => {
+    axios
+      .post('/graphql', {
+        query: addFavorite(uId, product),
+      })
+      .then((res) => {
+        const newFavArray = heartedFavs;
+        newFavArray.push(currentProduct);
+        changeFavs(newFavArray);
+        toggle.toggle = true;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const changeHeart = () => {
     if (toggleState === false) {
@@ -14,8 +43,13 @@ const FavoriteBtn = () => {
   };
 
   return (
-    <button className="w-10 h-10 text-xs" onClick={changeHeart}>
-      {toggleState === true ? (
+    <button
+      className="w-10 h-10 text-xs"
+      onClick={() => {
+        setFavorite(userId, currentProduct);
+      }}
+    >
+      {toggle.toggle ? (
         <FontAwesomeIcon
           className="text-red-600 fill-current"
           icon={faHeart}

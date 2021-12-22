@@ -20,6 +20,7 @@ export type Stores = singleResult[];
 
 export interface layout {
   currentCategory: string;
+  heartedFavs: string[];
 }
 
 export interface favoriteType {
