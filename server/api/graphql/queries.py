@@ -79,7 +79,6 @@ def resolve_user(obj, info, email_address, password):
 
 @convert_kwargs_to_snake_case
 def resolve_favorites(obj, info, user_id):
-    print('searching for favs')
     try:
         favorites = [favorite.to_dict() for favorite in Favorites.query.all()]
         filtered_favorites = []

@@ -1,9 +1,8 @@
 from datetime import datetime
 import bcrypt
 from ariadne import convert_kwargs_to_snake_case
-
 from api import db
-from api.database.models import Products, Users
+from api.database.models import Products, Users, Favorites
 
 @convert_kwargs_to_snake_case
 def resolve_create_product(obj, info, product_name, image_url, price, information, season, category, quantity):
@@ -41,32 +40,6 @@ def resolve_delete_product(obj, info, product_id):
 
     return payload
 
-# @convert_kwargs_to_snake_case
-# def resolve_update_due_date(obj, info, todo_id, new_date):
-#     try:
-#         todo = Todo.query.get(todo_id)
-#         if todo:
-#             todo.due_date = datetime.strptime(new_date, '%d-%m-%Y').date()
-#         db.session.add(todo)
-#         db.session.commit()
-#         payload = {
-#             "success": True,
-#             "todo": todo.to_dict()
-#         }
-
-#     except ValueError:  # date format errors
-#         payload = {
-#             "success": False,
-#             "errors": ["Incorrect date format provided. Date should be in "
-#                        "the format dd-mm-yyyy"]
-#         }
-#     except AttributeError:  # todo not found
-#         payload = {
-#             "success": False,
-#             "errors": [f"Todo matching id {todo_id} not found"]
-#         }
-#     return payload
-
 @convert_kwargs_to_snake_case
 def resolve_create_user(obj, info, first_name, last_name, email_address, phone_number, password):
     try:
@@ -84,7 +57,27 @@ def resolve_create_user(obj, info, first_name, last_name, email_address, phone_n
     except ValueError:  # product format errors
         payload = {
             "success": False,
-            "errors": [f"Incorrectly added product.  Please try again."]
+            "errors": [f"Incorrectly added user.  Please try again."]
+        }
+
+    return payload
+
+@convert_kwargs_to_snake_case
+def resolve_add_favorite(obj, info, user_id, product_name):
+    try:
+        favorite = Favorites(
+            user_id=user_id, product_name=product_name
+        )
+        db.session.add(favorite)
+        db.session.commit()
+        payload = {
+            "success": True,
+            "product": favorite.to_dict()
+        }
+    except ValueError:  # product format errors
+        payload = {
+            "success": False,
+            "errors": [f"Incorrectly added favorite.  Please try again."]
         }
 
     return payload

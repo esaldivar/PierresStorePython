@@ -6,7 +6,7 @@ from ariadne import load_schema_from_path, make_executable_schema, \
 from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
 from api.graphql.queries import resolve_products, resolve_product, resolve_user, resolve_users, resolve_favorites
-from api.graphql.mutations import resolve_create_product, resolve_delete_product, resolve_create_user
+from api.graphql.mutations import resolve_create_product, resolve_delete_product, resolve_create_user, resolve_add_favorite
 
 query = ObjectType("Query")
 query.set_field("products", resolve_products)
@@ -20,6 +20,7 @@ mutation = ObjectType("Mutation")
 mutation.set_field("deleteProduct", resolve_delete_product)
 mutation.set_field("createProduct", resolve_create_product)
 mutation.set_field("createUser", resolve_create_user)
+mutation.set_field("addFavorite", resolve_add_favorite)
 
 type_defs = load_schema_from_path("api/graphql/schema.graphql")
 schema = make_executable_schema(

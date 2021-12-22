@@ -50,6 +50,18 @@ export const getUser = (client: string, password: string): string => {
   }`;
 };
 
+export const getFavorites = (userId: number): string => {
+  return `query fetchFavorites {
+    favorites(userId:${userId}) {
+      success
+      errors
+      favorites { 
+      productName
+      }
+    }
+  }`;
+};
+
 export const getAllUsers = (): string => {
   return `query fetchAllUsers {
     users {

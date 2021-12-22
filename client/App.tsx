@@ -14,6 +14,7 @@ import Categories from './views/Categories';
 import SpecificCategory from './components/SpecificCategory';
 import AccountCreation from './views/AccountCreation';
 import SignIn from './views/SignIn';
+import Favorites from './views/Favorites';
 
 export const App = () => {
   return (
@@ -25,6 +26,7 @@ export const App = () => {
             <Route index element={<InventoryHome />} />
             <Route path="/createaccount" element={<AccountCreation />} />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/productdetails" element={<ProductDetails />}>
               <Route path=":productName" element={<ProductDetailsInfo />} />
             </Route>

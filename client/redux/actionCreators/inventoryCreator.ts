@@ -45,3 +45,12 @@ export const setProduct = (input: string) => {
     });
   };
 };
+
+export const setFavorites = (input: Stores) => {
+  return (dispatch: AppDispatch) => {
+    dispatch({
+      type: 'FAVORITES',
+      payload: input,
+    });
+  };
+};

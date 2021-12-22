@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getUser } from '../utilities/queries';
 import { loginInfoType } from '../types/utilityTypes';
@@ -20,8 +20,8 @@ const SignInForm = () => {
       .then((res) => {
         const authenticated = res.data.errors == undefined ? true : false;
         if (authenticated) {
-          const sessionDataEmail = res.data.data.user.user.emailAddress;
-          localStorage.setItem('email', sessionDataEmail);
+          const sessionUserId = res.data.data.user.user.userId;
+          localStorage.setItem('userId', sessionUserId);
           navigate('/');
         }
       })

@@ -13,10 +13,15 @@ export interface inventory {
   singleResult: singleResult;
   store: singleResult[];
   currentProduct: string;
+  favorites: singleResult[];
 }
 
 export type Stores = singleResult[];
 
 export interface layout {
   currentCategory: string;
+}
+
+export interface favoriteType {
+  productName: string;
 }

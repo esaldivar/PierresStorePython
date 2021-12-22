@@ -13,6 +13,7 @@ const initalState: inventory = {
   },
   store: [],
   currentProduct: '',
+  favorites: [],
 };
 
 export default function reducer(state = initalState, action: AnyAction) {
@@ -46,6 +47,13 @@ export default function reducer(state = initalState, action: AnyAction) {
       return {
         ...state,
         currentProduct: action.payload,
+      };
+    }
+
+    case 'FAVORITES': {
+      return {
+        ...state,
+        favorites: action.payload,
       };
     }
 
