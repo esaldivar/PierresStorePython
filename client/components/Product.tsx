@@ -17,7 +17,6 @@ const Product = ({
 }: singleResult) => {
   const dispatch = useAppDispatch();
   const { setProduct } = bindActionCreators(inventoryActionCreator, dispatch);
-  const { favorites } = useAppSelector((state: RootState) => state.inventory);
   const { heartedFavs } = useAppSelector((state: RootState) => state.layout);
 
   // console.log(heartedFavs)
