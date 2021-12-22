@@ -47,11 +47,30 @@ type UsersResult {
     users: [User]
 }
 
+type Favorite {
+    favoriteId: ID!
+    userId: Int!
+    productName: String!
+}
+
+type FavoriteResult {
+    success: Boolean!
+    errors: [String]
+    favorite: Favorite
+}
+
+type FavoritesResult {
+    success: Boolean!
+    errors: [String]
+    favorites: [Favorite]
+}
+
 type Query {
     products: ProductsResult!
     product(productName: String): ProductResult!
     users: UsersResult!
     user(emailAddress: String, password: String): UserResult!
+    favorites(userId: Int!): FavoritesResult!
 }
 
 type DeleteProductResult {

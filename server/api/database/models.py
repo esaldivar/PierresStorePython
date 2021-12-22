@@ -4,24 +4,6 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import *
 
-class Client(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    phone_number = db.Column(db.String(10), nullable=True)
-    email_address = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(500), nullable=False)
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "phone_number": self.phone_number,
-            "email_address": self.email_address,
-            "password": self.password,
-        }
-
 class Users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
@@ -40,7 +22,6 @@ class Users(db.Model):
             "email_address": self.email_address,
             "password": self.password,
         }
-
 
 class Products(db.Model):
     product_id  = db.Column(db.Integer, primary_key=True)
@@ -69,13 +50,9 @@ class Favorites(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False,)
     product_name = db.Column(db.String(50), nullable=False)
 
-
     def to_dict(self):
         return {
-            "id": self.id,
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "phone_number": self.phone_number,
-            "email_address": self.email_address,
-            "password": self.password,
+            "favorite_id ": self.favorite_id,
+            "user_id": self.user_id,
+            "product_name": self.product_name,
         }

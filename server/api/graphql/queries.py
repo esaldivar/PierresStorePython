@@ -1,4 +1,4 @@
-from api.database.models import Users, Products
+from api.database.models import Users, Products, Favorites
 import bcrypt
 from ariadne import convert_kwargs_to_snake_case
 
@@ -73,6 +73,29 @@ def resolve_user(obj, info, email_address, password):
         payload = {
             "success": False,
             "errors": [f"Unable to find {email_address}"]
+        }
+
+    return payload
+
+@convert_kwargs_to_snake_case
+def resolve_favorites(obj, info, user_id):
+    print('searching for favs')
+    try:
+        favorites = [favorite.to_dict() for favorite in Favorites.query.all()]
+        filtered_favorites = []
+        for favorite in favorites:
+            if favorite['user_id'] == user_id:
+                print('searching for favs')
+                filtered_favorites.append(favorite)
+        
+        payload = {
+            "success": True,
+            "favorites": filtered_favorites
+        }
+    except AttributeError:  # product not found
+        payload = {
+            "success": False,
+            "errors": [f"Unable to find {user_id}"]
         }
 
     return payload
