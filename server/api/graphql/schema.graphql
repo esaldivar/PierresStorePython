@@ -27,7 +27,7 @@ type ProductsResult {
 }
 
 type User {
-    id: ID!
+    userId: ID!
     firstName: String!
     lastName: String!
     phoneNumber: String!

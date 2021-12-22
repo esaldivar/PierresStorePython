@@ -40,7 +40,7 @@ export const getUser = (client: string, password: string): string => {
       success
       errors
       user { 
-      id
+      userId
       firstName
       lastName
       phoneNumber

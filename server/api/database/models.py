@@ -4,37 +4,13 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import *
 
-class Customers(db.Model):
+class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    phone_number = db.Column(db.String(10), nullable=False)
+    phone_number = db.Column(db.String(10), nullable=True)
     email_address = db.Column(db.String(50), unique=True, nullable=False)
-    street = db.Column(db.String(50), nullable=False)
-    city = db.Column(db.String(50), nullable=False)
-    state = db.Column(db.String(20), nullable=False)
-    zip_code = db.Column(db.String(5), nullable=False)
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "phone_number": self.phone_number,
-            "email_address": self.email_address,
-            "street": self.street,
-            "city": self.city,
-            "state": self.state,
-            "zip_code": self.zip_code
-        }
-
-class Clients(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    phone_number = db.Column(db.String(10), nullable=False)
-    email_address = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
+    password = db.Column(db.String(500), nullable=False)
 
     def to_dict(self):
         return {
@@ -47,16 +23,17 @@ class Clients(db.Model):
         }
 
 class Users(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     phone_number = db.Column(db.String(10), nullable=True)
     email_address = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(500), nullable=False)
+    favorites = db.relationship('Favorites', backref='users')
 
     def to_dict(self):
         return {
-            "id": self.id,
+            "user_id": self.user_id,
             "first_name": self.first_name,
             "last_name": self.last_name,
             "phone_number": self.phone_number,
@@ -85,4 +62,20 @@ class Products(db.Model):
             "season": self.season,
             "category": self.category,
             "quantity": self.quantity
+        }
+
+class Favorites(db.Model):
+    favorite_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False,)
+    product_name = db.Column(db.String(50), nullable=False)
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "phone_number": self.phone_number,
+            "email_address": self.email_address,
+            "password": self.password,
         }

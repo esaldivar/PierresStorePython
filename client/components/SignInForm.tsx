@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { getUser } from '../utilities/queries';
 import { loginInfoType } from '../types/utilityTypes';
+import { useNavigate } from 'react-router-dom';
 
 const SignInForm = () => {
   const [loginCreds, setLoginCreds] = useState<loginInfoType>({
@@ -9,13 +10,20 @@ const SignInForm = () => {
     password: '',
   });
 
+  const navigate = useNavigate();
+
   const loginAttempt = (loginInfo: loginInfoType) => {
     axios
       .post('/graphql', {
-        query: getUser(loginCreds.emailAddress, loginCreds.password),
+        query: getUser(loginInfo.emailAddress, loginInfo.password),
       })
       .then((res) => {
-        console.log(res);
+        const authenticated = res.data.errors == undefined ? true : false;
+        if (authenticated) {
+          const sessionDataEmail = res.data.data.user.user.emailAddress;
+          localStorage.setItem('email', sessionDataEmail);
+          navigate('/');
+        }
       })
       .catch((err) => {
         console.log(err);
