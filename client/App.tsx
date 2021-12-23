@@ -15,6 +15,7 @@ import SpecificCategory from './components/SpecificCategory';
 import AccountCreation from './views/AccountCreation';
 import SignIn from './views/SignIn';
 import Favorites from './views/Favorites';
+import ShoppingCart from './views/ShoppingCart';
 
 export const App = () => {
   return (
@@ -27,6 +28,7 @@ export const App = () => {
             <Route path="/createaccount" element={<AccountCreation />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/cart" element={<ShoppingCart />} />
             <Route path="/productdetails" element={<ProductDetails />}>
               <Route path=":productName" element={<ProductDetailsInfo />} />
             </Route>

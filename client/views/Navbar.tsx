@@ -29,7 +29,7 @@ const NavBar = () => {
       <div className="flex items-center align-middle ">
         <UserNav />
         <div className="w-32">
-          <Link to="/">
+          <Link to="/cart">
             <img
               src="https://pierresstore.s3.us-east-2.amazonaws.com/Traveling_Cart.png"
               alt="Shopping Cart Icon"
