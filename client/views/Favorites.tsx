@@ -1,11 +1,9 @@
 import { useAppDispatch, useAppSelector, RootState } from '../types/reduxTypes';
 import { bindActionCreators } from 'redux';
 import { inventoryActionCreator } from '../redux/actionReferences';
-import { useEffect, useState } from 'react';
-import { getFavorites } from '../utilities/queries';
+import { useEffect } from 'react';
 import { singleResult } from '../types/storeTypes';
 import ProductCard from '../components/ProductCard';
-import axios from 'axios';
 
 const Favorites = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +12,6 @@ const Favorites = () => {
   );
   const { heartedFavs } = useAppSelector((state: RootState) => state.layout);
   const { setFavorites } = bindActionCreators(inventoryActionCreator, dispatch);
-  const [favoriteList, setFavoriteList] = useState<string[]>([]);
   const filteredArray: any = [];
 
   const objectCheck = (object: any, arrayofFavs: string[]): boolean => {
