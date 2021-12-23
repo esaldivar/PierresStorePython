@@ -1,9 +1,9 @@
-const Button = ({ text }: { text: string }) => {
+const CheckOutButton = () => {
   return (
     <button className="flex px-4 py-2 m-auto text-white rounded bg-greenTitle hover:bg-green-600">
-      {text}
+      Check Out
     </button>
   );
 };
 
-export default Button;
+export default CheckOutButton;

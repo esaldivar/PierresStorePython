@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
 import { bindActionCreators } from 'redux';
 import { inventoryActionCreator } from '../redux/actionReferences';
 import { singleResult } from '../types/storeTypes';
-import PierreButton from './Button';
+import PierreButton from './AddToCartButton';
 import FavoriteBtn from './FavoriteBtn';
 import { Seasons } from '../utilities/seasonalData';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';

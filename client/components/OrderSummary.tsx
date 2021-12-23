@@ -1,4 +1,4 @@
-import Button from './Button';
+import CheckOutButton from './CheckOutButton';
 
 const OrderSummary = () => {
   return (
@@ -7,7 +7,7 @@ const OrderSummary = () => {
       <p>Subtotal # of items here</p>
       <p>Estimated tax</p>
       <hr></hr>
-      <Button text="Check out" />
+      <CheckOutButton />
     </div>
   );
 };
