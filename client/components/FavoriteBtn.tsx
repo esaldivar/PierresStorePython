@@ -4,7 +4,7 @@ import { layoutActionCreator } from '../redux/actionReferences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-import { addFavorite } from '../utilities/mutations';
+import { addFavorite, removeFavorite } from '../utilities/mutations';
 import axios from 'axios';
 import { toggleFav } from '../types/utilityTypes';
 
@@ -17,28 +17,51 @@ const FavoriteBtn = (toggle: toggleFav) => {
     : null;
   const currentProduct = toggle.product;
 
-  const setFavorite = (uId: number, product: string) => {
-    axios
-      .post('/graphql', {
-        query: addFavorite(uId, product),
-      })
-      .then((res) => {
-        console.log(res);
-        const newFavArray = heartedFavs;
-        newFavArray.push(currentProduct);
-        changeFavs(newFavArray);
-        toggle.toggle = true;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const toggleFavorite = (uId: number, product: string) => {
+    if (
+      !heartedFavs.includes(
+        product
+      ) /*logic that checks if item is stored in favorites */
+    ) {
+      axios
+        .post('/graphql', {
+          query: addFavorite(uId, product),
+        })
+        .then((res) => {
+          console.log(res);
+          const newFavArray = heartedFavs;
+          newFavArray.push(currentProduct);
+          changeFavs(newFavArray);
+          toggle.toggle = true;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .post('/graphql', {
+          query: removeFavorite(uId, product),
+        })
+        .then((res) => {
+          console.log(res);
+          const newFavArray = heartedFavs.filter((elem: string) => {
+            elem !== product;
+          });
+          console.log(product, heartedFavs, newFavArray);
+          changeFavs(newFavArray);
+          toggle.toggle = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
     <button
       className="w-10 h-10 text-xs"
       onClick={() => {
-        setFavorite(userId, currentProduct);
+        toggleFavorite(userId, currentProduct);
       }}
     >
       {toggle.toggle ? (

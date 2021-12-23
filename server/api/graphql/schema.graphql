@@ -78,9 +78,15 @@ type DeleteProductResult {
     errors: [String]
 }
 
+type DeleteFavoriteResult {
+    success: Boolean!
+    errors: [String]
+}
+
 type Mutation {
     createProduct(productName: String!, imageUrl: String!, price: Int!, information: String! , season: [String], category: [String]! , quantity: String!): ProductResult!
     deleteProduct(productId: ID!): DeleteProductResult!
     createUser(firstName: String!, lastName: String!, phoneNumber: String!, emailAddress: String!, password: String!): UserResult!
     addFavorite(userId: Int!, productName: String!): FavoritesResult!
+    deleteFavorite(userId: Int!, productName: String!): DeleteFavoriteResult!
 }

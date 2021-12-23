@@ -31,3 +31,12 @@ export const addFavorite = (userId: number, productName: string): string => {
         }
       }`;
 };
+
+export const removeFavorite = (userId: number, productName: string): string => {
+  return `mutation deleteFavorite {
+    deleteFavorite(userId:${userId}, productName:"${productName}") {
+      success
+      errors
+    }
+  }`;
+};

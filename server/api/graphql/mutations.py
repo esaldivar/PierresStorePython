@@ -72,12 +72,35 @@ def resolve_add_favorite(obj, info, user_id, product_name):
         db.session.commit()
         payload = {
             "success": True,
-            "product": favorite.to_dict()
+            "favorite": favorite.to_dict()
         }
     except ValueError:  # product format errors
         payload = {
             "success": False,
             "errors": [f"Incorrectly added favorite.  Please try again."]
+        }
+
+    return payload
+
+
+@convert_kwargs_to_snake_case
+def resolve_delete_favorite(obj, info, user_id, product_name):
+    try:
+        favorite_id = 1
+        favorites = [favorite.to_dict() for favorite in Favorites.query.all()]
+        for favorite_item in favorites:
+            if favorite_item['user_id'] == user_id and favorite_item['product_name'] == product_name:
+                favorite_id = favorite_item['favorite_id ']
+                break
+        favorite = Favorites.query.get(favorite_id)
+        db.session.delete(favorite)
+        db.session.commit()
+        payload = {"success": True}
+
+    except AttributeError:
+        payload = {
+            "success": False,
+            "errors": [f"Favorite id of {favorite_id} not found"]
         }
 
     return payload
