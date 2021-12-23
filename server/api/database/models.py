@@ -52,7 +52,7 @@ class Favorites(db.Model):
 
     def to_dict(self):
         return {
-            "favorite_id ": self.favorite_id,
+            "favorite_id": self.favorite_id,
             "user_id": self.user_id,
             "product_name": self.product_name,
         }

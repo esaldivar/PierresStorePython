@@ -90,7 +90,7 @@ def resolve_delete_favorite(obj, info, user_id, product_name):
         favorites = [favorite.to_dict() for favorite in Favorites.query.all()]
         for favorite_item in favorites:
             if favorite_item['user_id'] == user_id and favorite_item['product_name'] == product_name:
-                favorite_id = favorite_item['favorite_id ']
+                favorite_id = favorite_item['favorite_id']
                 break
         favorite = Favorites.query.get(favorite_id)
         db.session.delete(favorite)
