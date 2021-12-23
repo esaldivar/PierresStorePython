@@ -18,10 +18,6 @@ const Favorites = () => {
     return arrayofFavs.includes(object.productName);
   };
 
-  const userId: number | null = localStorage.getItem('userId')
-    ? parseInt(localStorage.getItem('userId'))
-    : null;
-
   useEffect(() => {
     for (let i = 0; i < store.length; i++) {
       if (objectCheck(store[i], heartedFavs)) {
