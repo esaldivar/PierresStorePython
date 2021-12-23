@@ -1,8 +1,22 @@
+import OrderSummary from '../components/OrderSummary';
+
 const ShoppingCart = () => {
+  const userId: number | null = localStorage.getItem('userId')
+    ? parseInt(localStorage.getItem('userId'))
+    : null;
+
   return (
-    <div className="flex w-full">
-      <div className="flex-col w-4/5 bg-blue-200">Shopping Cart Layout</div>
-      <div className="flex-col w-1/5 bg-red-400">Order Summary</div>
+    <div>
+      {userId !== null ? (
+        <div className="flex w-full">
+          <div className="flex-col w-4/5 bg-blue-200">Shopping Cart Layout</div>
+          <OrderSummary />
+        </div>
+      ) : (
+        <div>
+          <h1>Not Logged In</h1>
+        </div>
+      )}
     </div>
   );
 };

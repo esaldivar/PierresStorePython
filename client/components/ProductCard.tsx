@@ -5,7 +5,7 @@ import FavoriteBtn from './FavoriteBtn';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
 import { Categories } from '../utilities/categoryImages';
 import { Seasons } from '../utilities/seasonalData';
-import PierreButton from './AddToCardBtn';
+import PierreButton from './Button';
 import { singleResult } from '../types/storeTypes';
 import { Link } from 'react-router-dom';
 

@@ -24,11 +24,11 @@ const SearchBar = () => {
           query: findProduct(searchInput.toLowerCase()),
         })
         .then((res) => {
-          console.log(res);
+          search('');
+          e.target.value = '';
           const product = res.data.data.product.product;
           if (product.productName.length > 0) {
             searchView(product);
-            search('');
             navigate(`${product.productName}`);
           }
         })
