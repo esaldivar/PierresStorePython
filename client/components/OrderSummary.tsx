@@ -14,7 +14,7 @@ const OrderSummary = () => {
         <p>Subtotal</p>
         <p>${subtotal}</p>
       </div>
-      <div className="flex justify-between mt-4">
+      <div className="flex justify-between mt-2">
         <p>Estimated tax</p>
         <p>${tax}</p>
       </div>

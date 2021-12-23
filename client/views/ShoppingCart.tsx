@@ -1,10 +1,16 @@
 import OrderSummary from '../components/OrderSummary';
 import Cart from '../components/Cart';
+import { useAppSelector, RootState } from '../types/reduxTypes';
 
 const ShoppingCart = () => {
+  const { shoppingCart } = useAppSelector(
+    (state: RootState) => state.inventory
+  );
   const userId: number | null = localStorage.getItem('userId')
     ? parseInt(localStorage.getItem('userId'))
     : null;
+
+  console.log(shoppingCart);
 
   return (
     <div className="flex justify-center w-full m-auto">

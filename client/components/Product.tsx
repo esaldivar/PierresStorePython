@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
 import { bindActionCreators } from 'redux';
 import { inventoryActionCreator } from '../redux/actionReferences';
 import { singleResult } from '../types/storeTypes';
-import PierreButton from './AddToCartButton';
+import AddToCartButton from './AddToCartButton';
 import FavoriteBtn from './FavoriteBtn';
 import { Seasons } from '../utilities/seasonalData';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
@@ -88,7 +88,11 @@ const Product = ({
         </p>
       </div>
       <div className="flex items-center w-2/12 ">
-        <PierreButton text="Add to Cart" />
+        <AddToCartButton
+          text="Add to Cart"
+          productName={productName}
+          price={price}
+        />
       </div>
     </div>
   );

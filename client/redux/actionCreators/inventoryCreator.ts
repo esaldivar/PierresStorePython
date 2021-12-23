@@ -1,4 +1,4 @@
-import { Stores } from '../../types/storeTypes';
+import { Stores, productInCart } from '../../types/storeTypes';
 import { AppDispatch } from '../../types/reduxTypes';
 
 export const search = (input: string) => {
@@ -50,6 +50,15 @@ export const setFavorites = (input: Stores) => {
   return (dispatch: AppDispatch) => {
     dispatch({
       type: 'FAVORITES',
+      payload: input,
+    });
+  };
+};
+
+export const addToCart = (input: productInCart) => {
+  return (dispatch: AppDispatch) => {
+    dispatch({
+      type: 'ADDTOCART',
       payload: input,
     });
   };

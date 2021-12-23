@@ -14,6 +14,12 @@ export interface inventory {
   store: singleResult[];
   currentProduct: string;
   favorites: singleResult[];
+  shoppingCart: productInCart[];
+}
+
+export interface productInCart {
+  productName: string;
+  price: string;
 }
 
 export type Stores = singleResult[];
@@ -25,4 +31,10 @@ export interface layout {
 
 export interface favoriteType {
   productName: string;
+}
+
+export interface addToCartBtnProps {
+  text: string;
+  productName: string;
+  price: string;
 }
