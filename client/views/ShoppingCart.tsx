@@ -6,9 +6,9 @@ const ShoppingCart = () => {
     : null;
 
   return (
-    <div>
+    <div className="flex justify-center w-full m-auto">
       {userId !== null ? (
-        <div className="flex w-full">
+        <div className="flex w-10/12 bg-white bg-opacity-50 rounded searchBorder">
           <div className="flex-col w-4/5 bg-blue-200">Shopping Cart Layout</div>
           <OrderSummary />
         </div>
