@@ -54,3 +54,7 @@ export interface toggleFav {
   toggle: boolean;
   product: string;
 }
+
+export interface totalInterface {
+  total: number;
+}

@@ -1,10 +1,11 @@
 import CheckOutButton from './CheckOutButton';
+import { totalInterface } from '../types/utilityTypes';
 
-const subtotal = 10;
-const tax = Math.ceil(0.15 * subtotal);
-const total = subtotal + tax;
+const OrderSummary = (total: totalInterface) => {
+  const totalSum = total.total;
+  const tax = Math.ceil(0.08 * totalSum);
+  const actualPrice = totalSum + tax;
 
-const OrderSummary = () => {
   return (
     <div className="flex-col w-1/5 px-2 bg-lightBrown">
       <div className="flex mt-2">
@@ -12,7 +13,7 @@ const OrderSummary = () => {
       </div>
       <div className="flex justify-between mt-4">
         <p>Subtotal</p>
-        <p>${subtotal}</p>
+        <p>${totalSum}</p>
       </div>
       <div className="flex justify-between mt-2">
         <p>Estimated tax</p>
@@ -21,7 +22,7 @@ const OrderSummary = () => {
       <hr className="mt-2"></hr>
       <div className="flex justify-between mt-4 mb-6">
         <h1 className="font-bold text-gray-700">Total</h1>
-        <p className="font-bold text-gray-700">${total}</p>
+        <p className="font-bold text-gray-700">${actualPrice}</p>
       </div>
       <CheckOutButton />
     </div>

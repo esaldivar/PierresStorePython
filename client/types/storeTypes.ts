@@ -38,3 +38,8 @@ export interface addToCartBtnProps {
   productName: string;
   price: string;
 }
+
+export interface shoppingCartProps {
+  productName: string;
+  price: string;
+}
