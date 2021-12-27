@@ -20,6 +20,7 @@ export interface inventory {
 export interface productInCart {
   productName: string;
   price: string;
+  imageUrl: string;
 }
 
 export type Stores = singleResult[];
@@ -37,9 +38,11 @@ export interface addToCartBtnProps {
   text: string;
   productName: string;
   price: string;
+  imageUrl: string;
 }
 
 export interface shoppingCartProps {
   productName: string;
   price: string;
+  imageUrl: string;
 }

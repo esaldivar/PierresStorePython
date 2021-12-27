@@ -13,6 +13,7 @@ const AddToCartButton = (props: addToCartBtnProps) => {
   const cartDetails: productInCart = {
     productName: props.productName,
     price: props.price,
+    imageUrl: props.imageUrl,
   };
 
   const setCart = (product: productInCart): void => {

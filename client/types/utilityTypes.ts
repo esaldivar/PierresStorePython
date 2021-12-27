@@ -58,3 +58,18 @@ export interface toggleFav {
 export interface totalInterface {
   total: number;
 }
+
+export interface cartItemProps {
+  props: {
+    productName: string;
+    price: string;
+    imageUrl: string;
+  };
+  key: string;
+}
+
+export interface productDetails {
+  quantity: number;
+  currentPrice: number;
+  priceChange: boolean;
+}

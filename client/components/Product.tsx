@@ -92,6 +92,7 @@ const Product = ({
           text="Add to Cart"
           productName={productName}
           price={price}
+          imageUrl={imageUrl}
         />
       </div>
     </div>
