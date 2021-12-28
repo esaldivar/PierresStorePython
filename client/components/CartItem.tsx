@@ -1,14 +1,22 @@
 import { useAppDispatch, useAppSelector, RootState } from '../types/reduxTypes';
+import { productInCart } from '../types/storeTypes';
 import { bindActionCreators } from 'redux';
 import { inventoryActionCreator } from '../redux/actionReferences';
 import { useState } from 'react';
 import { cartItemProps, productDetails } from '../types/utilityTypes';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const CartItem = (props: cartItemProps) => {
   const dispatch = useAppDispatch();
-  const { updateTotal } = bindActionCreators(inventoryActionCreator, dispatch);
-  const { total } = useAppSelector((state: RootState) => state.inventory);
+  const { updateTotal, addToCart } = bindActionCreators(
+    inventoryActionCreator,
+    dispatch
+  );
+  const { shoppingCart } = useAppSelector(
+    (state: RootState) => state.inventory
+  );
   const { productName, price, imageUrl } = props.props;
   const initialPrice = parseInt(price);
   const [productDetails, setProductDetails] = useState<productDetails>({
@@ -17,7 +25,32 @@ const CartItem = (props: cartItemProps) => {
     priceChange: false,
   });
 
-  //   console.log(total);
+  const quantityChanger = (e: any): void => {
+    const newPrice: number = parseInt(e.target.value) * initialPrice;
+    const currentPrice: number = productDetails.currentPrice;
+    const difference: number = newPrice - currentPrice;
+    if (
+      parseInt(e.target.value) !== productDetails.quantity &&
+      parseInt(e.target.value) !== 1
+    ) {
+      updateTotal(difference);
+      setProductDetails({
+        ...productDetails,
+        currentPrice: parseInt(e.target.value) * initialPrice,
+        priceChange: true,
+        quantity: parseInt(e.target.value),
+      });
+    } else if (parseInt(e.target.value) === 1) {
+      updateTotal(difference);
+      setProductDetails({
+        ...productDetails,
+        currentPrice: initialPrice,
+        priceChange: false,
+        quantity: 1,
+      });
+    }
+  };
+
   return (
     <div className="flex items-center w-full py-4">
       <div className="w-1/5">
@@ -38,36 +71,7 @@ const CartItem = (props: cartItemProps) => {
           className="ml-4"
           value={productDetails.quantity}
           onChange={(e) => {
-            console.log('changing number');
-
-            if (
-              parseInt(e.target.value) !== productDetails.quantity &&
-              parseInt(e.target.value) !== 1
-            ) {
-              const newPrice: number = parseInt(e.target.value) * initialPrice;
-              const currentPrice: number = productDetails.currentPrice;
-              const difference: number = newPrice - currentPrice;
-
-              updateTotal(difference);
-              setProductDetails({
-                ...productDetails,
-                currentPrice: parseInt(e.target.value) * initialPrice,
-                priceChange: true,
-                quantity: parseInt(e.target.value),
-              });
-            } else if (parseInt(e.target.value) === 1) {
-              const newPrice: number = parseInt(e.target.value) * initialPrice;
-              const currentPrice: number = productDetails.currentPrice;
-              const difference: number = newPrice - currentPrice;
-
-              updateTotal(difference);
-              setProductDetails({
-                ...productDetails,
-                currentPrice: initialPrice,
-                priceChange: false,
-                quantity: 1,
-              });
-            }
+            quantityChanger(e);
           }}
         >
           <option value="1">1</option>
@@ -102,7 +106,25 @@ const CartItem = (props: cartItemProps) => {
         )}
       </div>
       <div className="w-1/5">
-        <h1 className="text-black">Remove item</h1>
+        <button
+          onClick={() => {
+            console.log('removing item');
+            const currentPrice: number = -productDetails.currentPrice;
+            updateTotal(currentPrice);
+            const newCart = shoppingCart.filter((product: productInCart) => {
+              if (product.productName !== productName) {
+                return product;
+              }
+            });
+            addToCart(newCart);
+          }}
+        >
+          <FontAwesomeIcon
+            className="fill-current text-greenTitle"
+            icon={faTrashAlt}
+            size="2x"
+          />
+        </button>
       </div>
     </div>
   );

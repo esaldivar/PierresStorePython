@@ -15,16 +15,40 @@ const OrderSummary = () => {
       </div>
       <div className="flex justify-between mt-4">
         <p>Subtotal</p>
-        <p>${total}</p>
+        <p className="flex items-center">
+          {total}
+          <img
+            className="w-5 h-5"
+            title="gold"
+            src="https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png"
+            alt="gold"
+          />
+        </p>
       </div>
       <div className="flex justify-between mt-2">
         <p>Estimated tax</p>
-        <p>${tax}</p>
+        <p className="flex items-center">
+          {tax}
+          <img
+            className="w-5 h-5"
+            title="gold"
+            src="https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png"
+            alt="gold"
+          />
+        </p>
       </div>
       <hr className="mt-2"></hr>
       <div className="flex justify-between mt-4 mb-6">
         <h1 className="font-bold text-gray-700">Total</h1>
-        <p className="font-bold text-gray-700">${actualPrice}</p>
+        <p className="flex items-center font-bold text-gray-700">
+          {actualPrice}
+          <img
+            className="w-5 h-5"
+            title="gold"
+            src="https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png"
+            alt="gold"
+          />
+        </p>
       </div>
       <CheckOutButton />
     </div>
