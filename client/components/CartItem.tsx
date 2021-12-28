@@ -17,7 +17,7 @@ const CartItem = (props: cartItemProps) => {
     priceChange: false,
   });
 
-  console.log(total);
+  //   console.log(total);
   return (
     <div className="flex items-center w-full py-4">
       <div className="w-1/5">
@@ -44,7 +44,11 @@ const CartItem = (props: cartItemProps) => {
               parseInt(e.target.value) !== productDetails.quantity &&
               parseInt(e.target.value) !== 1
             ) {
-              console.log('entering the conditional block');
+              const newPrice: number = parseInt(e.target.value) * initialPrice;
+              const currentPrice: number = productDetails.currentPrice;
+              const difference: number = newPrice - currentPrice;
+
+              updateTotal(difference);
               setProductDetails({
                 ...productDetails,
                 currentPrice: parseInt(e.target.value) * initialPrice,
@@ -52,6 +56,11 @@ const CartItem = (props: cartItemProps) => {
                 quantity: parseInt(e.target.value),
               });
             } else if (parseInt(e.target.value) === 1) {
+              const newPrice: number = parseInt(e.target.value) * initialPrice;
+              const currentPrice: number = productDetails.currentPrice;
+              const difference: number = newPrice - currentPrice;
+
+              updateTotal(difference);
               setProductDetails({
                 ...productDetails,
                 currentPrice: initialPrice,
