@@ -13,20 +13,20 @@ const ShoppingCart = () => {
 
   console.log(shoppingCart);
 
-  const totalPrice = shoppingCart.reduce(
-    (totalPrice: number, product: shoppingCartProps): number => {
-      totalPrice += parseInt(product.price);
-      return totalPrice;
-    },
-    0
-  );
+  //   const totalPrice = shoppingCart.reduce(
+  //     (totalPrice: number, product: shoppingCartProps): number => {
+  //       totalPrice += parseInt(product.price);
+  //       return totalPrice;
+  //     },
+  //     0
+  //   );
 
   return (
     <div className="flex justify-center w-full m-auto">
       {userId !== null ? (
         <div className="flex w-10/12 bg-white bg-opacity-50 rounded searchBorder">
           <Cart />
-          <OrderSummary total={totalPrice} />
+          <OrderSummary />
         </div>
       ) : (
         <div>

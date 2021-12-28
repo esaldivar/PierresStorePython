@@ -1,8 +1,14 @@
+import { useAppDispatch, useAppSelector, RootState } from '../types/reduxTypes';
+import { bindActionCreators } from 'redux';
+import { inventoryActionCreator } from '../redux/actionReferences';
 import { useState } from 'react';
 import { cartItemProps, productDetails } from '../types/utilityTypes';
 import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
 
 const CartItem = (props: cartItemProps) => {
+  const dispatch = useAppDispatch();
+  const { updateTotal } = bindActionCreators(inventoryActionCreator, dispatch);
+  const { total } = useAppSelector((state: RootState) => state.inventory);
   const { productName, price, imageUrl } = props.props;
   const initialPrice = parseInt(price);
   const [productDetails, setProductDetails] = useState<productDetails>({
@@ -11,6 +17,7 @@ const CartItem = (props: cartItemProps) => {
     priceChange: false,
   });
 
+  console.log(total);
   return (
     <div className="flex items-center w-full py-4">
       <div className="w-1/5">

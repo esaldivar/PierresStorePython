@@ -5,7 +5,10 @@ import { addToCartBtnProps, productInCart } from '../types/storeTypes';
 
 const AddToCartButton = (props: addToCartBtnProps) => {
   const dispatch = useAppDispatch();
-  const { addToCart } = bindActionCreators(inventoryActionCreator, dispatch);
+  const { addToCart, updateTotal } = bindActionCreators(
+    inventoryActionCreator,
+    dispatch
+  );
   const { shoppingCart } = useAppSelector(
     (state: RootState) => state.inventory
   );
@@ -17,9 +20,20 @@ const AddToCartButton = (props: addToCartBtnProps) => {
   };
 
   const setCart = (product: productInCart): void => {
+    let dontAdd = false;
+    shoppingCart.forEach((cartItem: productInCart) => {
+      if (cartItem.productName === props.productName) {
+        dontAdd = true;
+      }
+    });
+    if (dontAdd) {
+      console.log(props.productName + ' not added!');
+      return;
+    }
     const newCart = shoppingCart;
     newCart.push(product);
     addToCart(newCart);
+    updateTotal(parseInt(cartDetails.price));
   };
 
   return (

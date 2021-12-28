@@ -1,10 +1,12 @@
+import { useAppSelector, RootState } from '../types/reduxTypes';
 import CheckOutButton from './CheckOutButton';
 import { totalInterface } from '../types/utilityTypes';
 
-const OrderSummary = (total: totalInterface) => {
-  const totalSum = total.total;
-  const tax = Math.ceil(0.08 * totalSum);
-  const actualPrice = totalSum + tax;
+const OrderSummary = () => {
+  const { total } = useAppSelector((state: RootState) => state.inventory);
+  //   const totalSum = total.total;
+  const tax = Math.ceil(0.08 * total);
+  const actualPrice = total + tax;
 
   return (
     <div className="flex-col w-1/5 px-2 bg-lightBrown">
@@ -13,7 +15,7 @@ const OrderSummary = (total: totalInterface) => {
       </div>
       <div className="flex justify-between mt-4">
         <p>Subtotal</p>
-        <p>${totalSum}</p>
+        <p>${total}</p>
       </div>
       <div className="flex justify-between mt-2">
         <p>Estimated tax</p>

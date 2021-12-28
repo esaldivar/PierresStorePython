@@ -63,3 +63,12 @@ export const addToCart = (input: productInCart) => {
     });
   };
 };
+
+export const updateTotal = (input: number) => {
+  return (dispatch: AppDispatch) => {
+    dispatch({
+      type: 'UPDATETOTAL',
+      payload: input,
+    });
+  };
+};

@@ -3,7 +3,7 @@ import { shoppingCartProps } from '../types/storeTypes';
 import CartItem from './CartItem';
 
 const Cart = () => {
-  const { shoppingCart } = useAppSelector(
+  const { shoppingCart, total } = useAppSelector(
     (state: RootState) => state.inventory
   );
   const totalPrice: number = shoppingCart.reduce(
@@ -18,7 +18,7 @@ const Cart = () => {
     <div className="flex-col w-4/5 bg-white bg-opacity-50">
       <div className="flex items-center w-full py-4 bg-greenTitle">
         <h1 className="m-auto font-bold text-center">
-          Cart: ${totalPrice} ({numberOfItems} items)
+          Cart: ${total} ({numberOfItems} items)
         </h1>
       </div>
       <div>

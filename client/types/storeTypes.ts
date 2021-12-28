@@ -15,6 +15,7 @@ export interface inventory {
   currentProduct: string;
   favorites: singleResult[];
   shoppingCart: productInCart[];
+  total: number;
 }
 
 export interface productInCart {
