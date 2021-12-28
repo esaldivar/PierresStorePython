@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { cartItemProps, productDetails } from '../types/utilityTypes';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
 
 const CartItem = (props: cartItemProps) => {
   const { productName, price, imageUrl } = props.props;
   const initialPrice = parseInt(price);
   const [productDetails, setProductDetails] = useState<productDetails>({
-    quantity: 0,
+    quantity: 1,
     currentPrice: initialPrice,
     priceChange: false,
   });
@@ -22,29 +22,48 @@ const CartItem = (props: cartItemProps) => {
         />
       </div>
       <div className="w-2/5">
-        <h1 className="text-black">{productName}</h1>
-        <Dropdown className="flex items-center mr-4 align-middle cursor-pointer">
-          <Dropdown.Toggle
-            variant="success"
-            id="dropdown-basic"
-            className="flex items-center mt-2 text-3xl text-white align-middle border-none hover:text-primaryBrown bg-greenTitle"
-          >
-            <div className="flex-col ">
-              <h1 className="text-sm text-center ">Quanity {quantity}</h1>
-            </div>
-          </Dropdown.Toggle>
+        <h1 className="mb-6 font-semibold text-black">
+          {upperCaseFirstChar(productName)}
+        </h1>
+        <label htmlFor="quantity">Quantity:</label>
+        <select
+          name="quantity"
+          className="ml-4"
+          value={productDetails.quantity}
+          onChange={(e) => {
+            console.log('changing number');
 
-          <Dropdown.Menu className="py-0 overflow-y-auto ">
-            <Dropdown.Item className="m-auto text-greenTitle">2</Dropdown.Item>
-            <Dropdown.Item className="m-auto text-greenTitle">3</Dropdown.Item>
-            <Dropdown.Item className="m-auto text-greenTitle">4</Dropdown.Item>
-            <Dropdown.Item className="m-auto text-greenTitle">5</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+            if (
+              parseInt(e.target.value) !== productDetails.quantity &&
+              parseInt(e.target.value) !== 1
+            ) {
+              console.log('entering the conditional block');
+              setProductDetails({
+                ...productDetails,
+                currentPrice: parseInt(e.target.value) * initialPrice,
+                priceChange: true,
+                quantity: parseInt(e.target.value),
+              });
+            } else if (parseInt(e.target.value) === 1) {
+              setProductDetails({
+                ...productDetails,
+                currentPrice: initialPrice,
+                priceChange: false,
+                quantity: 1,
+              });
+            }
+          }}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
       </div>
       <div className="w-1/5 m-auto">
-        <h1 className="flex items-center m-auto font-bold text-center text-black">
-          {currentPrice}
+        <h1 className="flex items-center m-auto font-bold text-center text-black text-3x1">
+          {numberWithCommas(productDetails.currentPrice.toString())}
           <img
             className="w-5 h-5"
             title="gold"
@@ -52,6 +71,19 @@ const CartItem = (props: cartItemProps) => {
             alt="gold"
           />
         </h1>
+
+        {productDetails.priceChange && (
+          <h1 className="flex items-center ml-4 text-xs italic text-center text-gray-500">
+            {numberWithCommas(initialPrice.toString())}
+            <img
+              className="w-5 h-5"
+              title="gold"
+              src="https://pierresstore.s3.us-east-2.amazonaws.com/Gold+(1).png"
+              alt="gold"
+            />
+            each
+          </h1>
+        )}
       </div>
       <div className="w-1/5">
         <h1 className="text-black">Remove item</h1>
