@@ -17,21 +17,18 @@ const Seasonal = () => {
   const { store } = useAppSelector((state: RootState) => state.inventory);
 
   useEffect(() => {
-    const getProducts = (): void => {
-      axios
-        .post('/graphql', {
-          query: getAllProducts(),
-        })
-        .then((res) => {
-          const allProducts = initialAlpha(res.data.data.products.products);
-          getInventory(allProducts);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getProducts();
-  }, [getInventory]);
+    axios
+      .post('/graphql', {
+        query: getAllProducts(),
+      })
+      .then((res) => {
+        const allProducts = initialAlpha(res.data.data.products.products);
+        getInventory(allProducts);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const season = seasonSetter();
 
   return (
