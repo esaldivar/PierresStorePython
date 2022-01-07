@@ -17,17 +17,20 @@ const Seasonal = () => {
   const { store } = useAppSelector((state: RootState) => state.inventory);
 
   useEffect(() => {
-    axios
-      .post('/graphql', {
-        query: getAllProducts(),
-      })
-      .then((res) => {
-        const allProducts = initialAlpha(res.data.data.products.products);
-        getInventory(allProducts);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const getProducts = (): void => {
+      axios
+        .post('/graphql', {
+          query: getAllProducts(),
+        })
+        .then((res) => {
+          const allProducts = initialAlpha(res.data.data.products.products);
+          getInventory(allProducts);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getProducts();
   }, []);
   const season = seasonSetter();
 
