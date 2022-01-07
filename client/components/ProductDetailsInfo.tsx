@@ -1,13 +1,12 @@
-import { useAppSelector, RootState } from '../types/reduxTypes';
+import { productDetailsProps, singleResult } from '../types/storeTypes';
 
-const ProductDetailsInfo = () => {
-  const { currentProduct } = useAppSelector(
-    (state: RootState) => state.inventory
-  );
+const ProductDetailsInfo = (productInfo: productDetailsProps) => {
+  const currentProduct: singleResult | undefined = productInfo.productInfo;
 
   return (
     <div>
-      <h1>{currentProduct}</h1>
+      <h1>{currentProduct?.productName}</h1>
+      <h1>{currentProduct?.price}</h1>
     </div>
   );
 };

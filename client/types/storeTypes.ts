@@ -47,3 +47,7 @@ export interface shoppingCartProps {
   price: string;
   imageUrl: string;
 }
+
+export interface productDetailsProps {
+  productInfo?: singleResult;
+}
