@@ -18,9 +18,7 @@ const InventoryHome = () => {
   const { changeFavs } = bindActionCreators(layoutActionCreator, dispatch);
   const { store } = useAppSelector((state: RootState) => state.inventory);
 
-  const userId: number | null = localStorage.getItem('userId')
-    ? parseInt(localStorage.getItem('userId'))
-    : null;
+  const userId: string | null = localStorage.getItem('userId');
 
   useEffect(() => {
     axios
@@ -37,20 +35,26 @@ const InventoryHome = () => {
   }, []);
 
   useEffect(() => {
-    axios
-      .post('/graphql', {
-        query: getFavorites(userId),
-      })
-      .then((res) => {
-        const favoriteArr = res.data.data.favorites.favorites.map((el: any) => {
-          return el.productName;
+    if (typeof userId === 'number') {
+      axios
+        .post('/graphql', {
+          query: getFavorites(parseInt(userId)),
+        })
+        .then((res) => {
+          const favoriteArr = res.data.data.favorites.favorites.map(
+            (el: any) => {
+              return el.productName;
+            }
+          );
+          const uniqueFavs = [...new Set(favoriteArr)];
+          if (Array.isArray(uniqueFavs)) {
+            changeFavs(uniqueFavs);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        const uniqueFavs = [...new Set(favoriteArr)];
-        changeFavs(uniqueFavs);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }
   }, []);
 
   return (
