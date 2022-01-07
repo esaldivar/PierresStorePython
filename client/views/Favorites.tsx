@@ -25,7 +25,7 @@ const Favorites = () => {
       }
     }
     setFavorites(filteredArray);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="flex-col justify-center w-4/5 m-auto mb-6">

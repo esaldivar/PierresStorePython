@@ -32,7 +32,7 @@ const InventoryHome = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (typeof userId === 'number') {
@@ -55,7 +55,7 @@ const InventoryHome = () => {
           console.log(err);
         });
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="flex-col w-3/4 m-auto mt-10 mb-10 bg-white bg-opacity-50 rounded searchBorder">
