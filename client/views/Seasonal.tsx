@@ -31,7 +31,7 @@ const Seasonal = () => {
         });
     };
     getProducts();
-  }, []);
+  }, [getInventory]);
   const season = seasonSetter();
 
   return (
