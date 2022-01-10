@@ -1,10 +1,8 @@
 import { useAppSelector, RootState } from '../types/reduxTypes';
 import CheckOutButton from './CheckOutButton';
-import { totalInterface } from '../types/utilityTypes';
 
 const OrderSummary = () => {
   const { total } = useAppSelector((state: RootState) => state.inventory);
-  //   const totalSum = total.total;
   const tax = Math.ceil(0.08 * total);
   const actualPrice = total + tax;
 
