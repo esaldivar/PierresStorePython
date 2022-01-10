@@ -3,6 +3,7 @@ import CheckOutButton from './CheckOutButton';
 
 const OrderSummary = () => {
   const { total } = useAppSelector((state: RootState) => state.inventory);
+
   const tax = Math.ceil(0.08 * total);
   const actualPrice = total + tax;
 

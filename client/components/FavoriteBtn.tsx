@@ -45,7 +45,9 @@ const FavoriteBtn = (toggle: toggleFav) => {
         .then((res) => {
           console.log(res);
           const newFavArray = heartedFavs.filter((elem: string) => {
-            elem !== product;
+            if (elem !== product) {
+              return elem;
+            }
           });
           console.log(product, heartedFavs, newFavArray);
           changeFavs(newFavArray);

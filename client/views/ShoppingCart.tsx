@@ -10,6 +10,8 @@ const ShoppingCart = () => {
     ? parseInt(localStorage.getItem('userId'))
     : null;
 
+  console.log(shoppingCart);
+
   return (
     <div className="flex justify-center w-full m-auto">
       {userId !== null ? (
