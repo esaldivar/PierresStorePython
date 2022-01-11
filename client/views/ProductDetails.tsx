@@ -15,7 +15,7 @@ const ProductDetails = () => {
   });
 
   return (
-    <div>
+    <div className="w-full m-auto">
       <ProductDetailsInfo productInfo={productInfo} />
     </div>
   );
