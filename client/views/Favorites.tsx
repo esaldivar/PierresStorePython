@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { inventoryActionCreator } from '../redux/actionReferences';
 import { useEffect } from 'react';
 import { singleResult } from '../types/storeTypes';
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../components/SearchDetails/ProductCard';
 
 const Favorites = () => {
   const dispatch = useAppDispatch();

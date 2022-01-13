@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CreateAccountForm from '../components/CreateAccountForm';
+import CreateAccountForm from '../components/AccountInfo/CreateAccountForm';
 
 const AccountCreation = () => {
   return (

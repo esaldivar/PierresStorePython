@@ -1,12 +1,19 @@
-import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
+import {
+  useAppSelector,
+  useAppDispatch,
+  RootState,
+} from '../../types/reduxTypes';
 import { bindActionCreators } from 'redux';
-import { inventoryActionCreator } from '../redux/actionReferences';
-import FavoriteBtn from './FavoriteBtn';
-import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
-import { Categories } from '../utilities/categoryImages';
-import { Seasons } from '../utilities/seasonalData';
-import PierreButton from './AddToCartButton';
-import { singleResult } from '../types/storeTypes';
+import { inventoryActionCreator } from '../../redux/actionReferences';
+import FavoriteBtn from '../Buttons/FavoriteBtn';
+import {
+  upperCaseFirstChar,
+  numberWithCommas,
+} from '../../utilities/helperFuncs';
+import { Categories } from '../../utilities/categoryImages';
+import { Seasons } from '../../utilities/seasonalData';
+import PierreButton from '../Buttons/AddToCartButton';
+import { singleResult } from '../../types/storeTypes';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({
@@ -103,7 +110,12 @@ const ProductCard = ({
         </div>
       </div>
       <div className="flex items-end py-2 h-1/5">
-        <PierreButton text={'Add to Cart'} />
+        <PierreButton
+          text="Add to Cart"
+          productName={productName}
+          price={price}
+          imageUrl={imageUrl}
+        />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
-import OrderSummary from '../components/OrderSummary';
-import Cart from '../components/Cart';
+import OrderSummary from '../components/ShoppingCart/OrderSummary';
+import Cart from '../components/ShoppingCart/Cart';
 import { useAppSelector, RootState } from '../types/reduxTypes';
 
 const ShoppingCart = () => {

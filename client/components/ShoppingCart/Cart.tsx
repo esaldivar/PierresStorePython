@@ -1,4 +1,4 @@
-import { useAppSelector, RootState } from '../types/reduxTypes';
+import { useAppSelector, RootState } from '../../types/reduxTypes';
 import CartItem from './CartItem';
 
 const Cart = () => {

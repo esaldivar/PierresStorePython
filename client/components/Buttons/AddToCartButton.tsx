@@ -1,7 +1,11 @@
-import { useAppDispatch, useAppSelector, RootState } from '../types/reduxTypes';
+import {
+  useAppDispatch,
+  useAppSelector,
+  RootState,
+} from '../../types/reduxTypes';
 import { bindActionCreators } from 'redux';
-import { inventoryActionCreator } from '../redux/actionReferences';
-import { addToCartBtnProps, productInCart } from '../types/storeTypes';
+import { inventoryActionCreator } from '../../redux/actionReferences';
+import { addToCartBtnProps, productInCart } from '../../types/storeTypes';
 
 const AddToCartButton = (props: addToCartBtnProps) => {
   const dispatch = useAppDispatch();

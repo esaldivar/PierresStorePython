@@ -1,7 +1,7 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import { bindActionCreators } from 'redux';
-import { layoutActionCreator } from '../redux/actionReferences';
-import { useAppDispatch } from '../types/reduxTypes';
+import { layoutActionCreator } from '../../redux/actionReferences';
+import { useAppDispatch } from '../../types/reduxTypes';
 import { Link } from 'react-router-dom';
 
 const CategoeriesDropDown = () => {

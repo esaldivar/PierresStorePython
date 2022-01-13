@@ -7,8 +7,8 @@ import { singleResult } from '../types/storeTypes';
 import { seasonSetter } from '../utilities/seasonalData';
 import { getAllProducts } from '../utilities/queries';
 import { initialAlpha } from '../utilities/helperFuncs';
-import ProductCard from '../components/ProductCard';
-import SeasonalInfo from '../components/SeasonalInfo';
+import ProductCard from '../components/SearchDetails/ProductCard';
+import SeasonalInfo from '../components/SeasonalPage/SeasonalInfo';
 
 const Seasonal = () => {
   //detects the month and returns the season

@@ -1,5 +1,5 @@
-import { useAppSelector, RootState } from '../types/reduxTypes';
-import CheckOutButton from './CheckOutButton';
+import { useAppSelector, RootState } from '../../types/reduxTypes';
+import CheckOutButton from '../Buttons/CheckOutButton';
 
 const OrderSummary = () => {
   const { total } = useAppSelector((state: RootState) => state.inventory);

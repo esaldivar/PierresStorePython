@@ -1,5 +1,5 @@
 import { useAppSelector, RootState } from '../types/reduxTypes';
-import ProductDetailsInfo from '../components/ProductDetailsInfo';
+import ProductDetailsInfo from '../components/ProductDetailsComponents/ProductDetailsInfo';
 import { singleResult } from '../types/storeTypes';
 
 const ProductDetails = () => {

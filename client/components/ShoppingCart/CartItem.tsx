@@ -1,10 +1,17 @@
-import { useAppDispatch, useAppSelector, RootState } from '../types/reduxTypes';
-import { productInCart } from '../types/storeTypes';
+import {
+  useAppDispatch,
+  useAppSelector,
+  RootState,
+} from '../../types/reduxTypes';
+import { productInCart } from '../../types/storeTypes';
 import { bindActionCreators } from 'redux';
-import { inventoryActionCreator } from '../redux/actionReferences';
+import { inventoryActionCreator } from '../../redux/actionReferences';
 import { useState } from 'react';
-import { cartItemProps, productDetails } from '../types/utilityTypes';
-import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
+import { cartItemProps, productDetails } from '../../types/utilityTypes';
+import {
+  upperCaseFirstChar,
+  numberWithCommas,
+} from '../../utilities/helperFuncs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 

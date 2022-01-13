@@ -1,14 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
+import {
+  useAppSelector,
+  useAppDispatch,
+  RootState,
+} from '../../types/reduxTypes';
 import { bindActionCreators } from 'redux';
-import { inventoryActionCreator } from '../redux/actionReferences';
+import { inventoryActionCreator } from '../../redux/actionReferences';
 import {
   alphabetize,
   reverseAlpha,
   lowPrice,
   highPrice,
-} from '../utilities/helperFuncs';
+} from '../../utilities/helperFuncs';
 
 const StoreTitleBar = () => {
   const { store } = useAppSelector((state: RootState) => state.inventory);

@@ -7,10 +7,10 @@ import {
 import axios from 'axios';
 import { getAllProducts, getFavorites } from '../utilities/queries';
 import { singleResult } from '../types/storeTypes';
-import StoreTitleBar from '../components/StoreTitleBar';
+import StoreTitleBar from '../components/HomePage/StoreTitleBar';
 import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
 import { initialAlpha } from '../utilities/helperFuncs';
-import Product from '../components/Product';
+import Product from '../components/HomePage/Product';
 
 const InventoryHome = () => {
   const dispatch = useAppDispatch();

@@ -1,8 +1,8 @@
-import Searchbar from '../components/Searchbar';
+import Searchbar from '../components/NavBar/Searchbar';
 import { Link } from 'react-router-dom';
 import { seasonSetter } from '../utilities/seasonalData';
-import CategoeriesDropDown from '../components/CategoriesDropDown';
-import UserNav from '../components/UserNav';
+import CategoeriesDropDown from '../components/NavBar/CategoriesDropDown';
+import UserNav from '../components/NavBar/UserNav';
 
 const NavBar = () => {
   const season = seasonSetter();

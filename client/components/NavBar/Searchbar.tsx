@@ -1,11 +1,15 @@
 import { bindActionCreators } from 'redux';
-import { useAppSelector, RootState, useAppDispatch } from '../types/reduxTypes';
-import { inventoryActionCreator } from '../redux/actionReferences';
+import {
+  useAppSelector,
+  RootState,
+  useAppDispatch,
+} from '../../types/reduxTypes';
+import { inventoryActionCreator } from '../../redux/actionReferences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { findProduct } from '../utilities/queries';
+import { findProduct } from '../../utilities/queries';
 
 const SearchBar = () => {
   const dispatch = useAppDispatch();

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { getUser } from '../utilities/queries';
-import { loginInfoType } from '../types/utilityTypes';
+import { getUser } from '../../utilities/queries';
+import { loginInfoType } from '../../types/utilityTypes';
 import { useNavigate } from 'react-router-dom';
 
 const SignInForm = () => {

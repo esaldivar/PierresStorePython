@@ -1,4 +1,4 @@
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../components/SearchDetails/ProductCard';
 import { useAppSelector, RootState } from '../types/reduxTypes';
 
 const SearchResult = () => {

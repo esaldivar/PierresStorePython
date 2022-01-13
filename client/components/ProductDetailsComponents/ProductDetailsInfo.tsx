@@ -1,8 +1,9 @@
-import { useAppSelector, RootState } from '../types/reduxTypes';
-import { productDetailsProps } from '../types/storeTypes';
-import AddToCartButton from './AddToCartButton';
-import FavoriteBtn from './FavoriteBtn';
-import { upperCaseFirstChar } from '../utilities/helperFuncs';
+import { useAppSelector, RootState } from '../../types/reduxTypes';
+import { productDetailsProps } from '../../types/storeTypes';
+import AddToCartButton from '../Buttons/AddToCartButton';
+import FavoriteBtn from '../Buttons/FavoriteBtn';
+import { upperCaseFirstChar } from '../../utilities/helperFuncs';
+import ReactStars from 'react-rating-stars-component';
 
 const ProductDetailsInfo = (productInfo: productDetailsProps) => {
   const currentProduct = productInfo?.productInfo;
@@ -16,8 +17,15 @@ const ProductDetailsInfo = (productInfo: productDetailsProps) => {
 
   return (
     <div className="flex-col w-1/2 m-auto bg-white bg-opacity-50 rounded searchBorder">
-      <div className="flex items-center w-full py-2 m-auto bg-greenTitle">
+      <div className="flex items-center w-full px-2 py-2 m-auto bg-greenTitle">
+        {currentProduct !== undefined && (
+          <FavoriteBtn
+            toggle={toggleHeartFav}
+            product={currentProduct.productName}
+          />
+        )}
         <h1 className="m-auto text-center">{capName}</h1>
+        <ReactStars size={24} activeColor="#ffd700" color="white" />
       </div>
       <div className="flex">
         <div className="w-1/4 px-2 py-6 m-auto ">
@@ -40,12 +48,6 @@ const ProductDetailsInfo = (productInfo: productDetailsProps) => {
         <div className="flex-col w-3/4 px-2 m-auto">
           <p className="mb-6 italic">{currentProduct?.information}</p>
           <div className="flex">
-            {currentProduct !== undefined && (
-              <FavoriteBtn
-                toggle={toggleHeartFav}
-                product={currentProduct.productName}
-              />
-            )}
             {currentProduct !== undefined && (
               <AddToCartButton
                 text="Add to Cart"

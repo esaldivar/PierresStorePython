@@ -1,12 +1,16 @@
-import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
+import {
+  useAppSelector,
+  useAppDispatch,
+  RootState,
+} from '../../types/reduxTypes';
 import { bindActionCreators } from 'redux';
-import { layoutActionCreator } from '../redux/actionReferences';
+import { layoutActionCreator } from '../../redux/actionReferences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-import { addFavorite, removeFavorite } from '../utilities/mutations';
+import { addFavorite, removeFavorite } from '../../utilities/mutations';
 import axios from 'axios';
-import { toggleFav } from '../types/utilityTypes';
+import { toggleFav } from '../../types/utilityTypes';
 
 const FavoriteBtn = (toggle: toggleFav) => {
   const { heartedFavs } = useAppSelector((state: RootState) => state.layout);

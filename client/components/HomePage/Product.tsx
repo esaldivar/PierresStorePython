@@ -1,11 +1,18 @@
-import { useAppSelector, useAppDispatch, RootState } from '../types/reduxTypes';
+import {
+  useAppSelector,
+  useAppDispatch,
+  RootState,
+} from '../../types/reduxTypes';
 import { bindActionCreators } from 'redux';
-import { inventoryActionCreator } from '../redux/actionReferences';
-import { singleResult } from '../types/storeTypes';
-import AddToCartButton from './AddToCartButton';
-import FavoriteBtn from './FavoriteBtn';
-import { Seasons } from '../utilities/seasonalData';
-import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
+import { inventoryActionCreator } from '../../redux/actionReferences';
+import { singleResult } from '../../types/storeTypes';
+import AddToCartButton from '../Buttons/AddToCartButton';
+import FavoriteBtn from '../Buttons/FavoriteBtn';
+import { Seasons } from '../../utilities/seasonalData';
+import {
+  upperCaseFirstChar,
+  numberWithCommas,
+} from '../../utilities/helperFuncs';
 import { Link } from 'react-router-dom';
 
 const Product = ({
