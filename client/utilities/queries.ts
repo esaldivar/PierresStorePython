@@ -34,18 +34,29 @@ export const getAllProducts = (): string => {
 }`;
 };
 
-export const getUser = (client: string): string => {
+export const getUser = (client: string, password: string): string => {
   return `query fetchUser {
-    user(emailAddress:"${client}") {
+    user(emailAddress:"${client}", password:"${password}") {
       success
       errors
       user { 
-      id
+      userId
       firstName
       lastName
       phoneNumber
       emailAddress
-      password
+      }
+    }
+  }`;
+};
+
+export const getFavorites = (userId: number): string => {
+  return `query fetchFavorites {
+    favorites(userId:${userId}) {
+      success
+      errors
+      favorites { 
+      productName
       }
     }
   }`;

@@ -1,12 +1,19 @@
-import { useAppDispatch } from '../types/reduxTypes';
+import {
+  useAppSelector,
+  useAppDispatch,
+  RootState,
+} from '../../types/reduxTypes';
 import { bindActionCreators } from 'redux';
-import { inventoryActionCreator } from '../redux/actionReferences';
-import FavoriteBtn from './FavoriteBtn';
-import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
-import { Categories } from '../utilities/categoryImages';
-import { Seasons } from '../utilities/seasonalData';
-import PierreButton from './AddToCardBtn';
-import { singleResult } from '../types/storeTypes';
+import { inventoryActionCreator } from '../../redux/actionReferences';
+import FavoriteBtn from '../Buttons/FavoriteBtn';
+import {
+  upperCaseFirstChar,
+  numberWithCommas,
+} from '../../utilities/helperFuncs';
+import { Categories } from '../../utilities/categoryImages';
+import { Seasons } from '../../utilities/seasonalData';
+import PierreButton from '../Buttons/AddToCartButton';
+import { singleResult } from '../../types/storeTypes';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({
@@ -20,11 +27,14 @@ const ProductCard = ({
   const dispatch = useAppDispatch();
   const { setProduct } = bindActionCreators(inventoryActionCreator, dispatch);
   const productNameFormatted = upperCaseFirstChar(productName);
+  const { heartedFavs } = useAppSelector((state: RootState) => state.layout);
+
+  const toggleHeartFav = heartedFavs.includes(productName);
 
   return (
     <div className="flex-col bg-white bg-opacity-50 rounded searchBorder ">
       <div className="flex w-full px-2 py-2 bg-greenTitle h-1/5">
-        <FavoriteBtn />
+        <FavoriteBtn toggle={toggleHeartFav} product={productName} />
         <Link
           className="w-11/12 py-2 text-lg text-center justify-self-center"
           onClick={() => {
@@ -100,7 +110,12 @@ const ProductCard = ({
         </div>
       </div>
       <div className="flex items-end py-2 h-1/5">
-        <PierreButton text={'Add to Cart'} />
+        <PierreButton
+          text="Add to Cart"
+          productName={productName}
+          price={price}
+          imageUrl={imageUrl}
+        />
       </div>
     </div>
   );

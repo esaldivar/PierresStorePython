@@ -13,6 +13,9 @@ const initalState: inventory = {
   },
   store: [],
   currentProduct: '',
+  favorites: [],
+  shoppingCart: [],
+  total: 0,
 };
 
 export default function reducer(state = initalState, action: AnyAction) {
@@ -46,6 +49,26 @@ export default function reducer(state = initalState, action: AnyAction) {
       return {
         ...state,
         currentProduct: action.payload,
+      };
+    }
+
+    case 'FAVORITES': {
+      return {
+        ...state,
+        favorites: action.payload,
+      };
+    }
+
+    case 'ADDTOCART': {
+      return {
+        ...state,
+        shoppingCart: action.payload,
+      };
+    }
+    case 'UPDATETOTAL': {
+      return {
+        ...state,
+        total: state.total + action.payload,
       };
     }
 

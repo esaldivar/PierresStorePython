@@ -1,11 +1,18 @@
-import { useAppDispatch } from '../types/reduxTypes';
+import {
+  useAppSelector,
+  useAppDispatch,
+  RootState,
+} from '../../types/reduxTypes';
 import { bindActionCreators } from 'redux';
-import { inventoryActionCreator } from '../redux/actionReferences';
-import { singleResult } from '../types/storeTypes';
-import PierreButton from './AddToCardBtn';
-import FavoriteBtn from './FavoriteBtn';
-import { Seasons } from '../utilities/seasonalData';
-import { upperCaseFirstChar, numberWithCommas } from '../utilities/helperFuncs';
+import { inventoryActionCreator } from '../../redux/actionReferences';
+import { singleResult } from '../../types/storeTypes';
+import AddToCartButton from '../Buttons/AddToCartButton';
+import FavoriteBtn from '../Buttons/FavoriteBtn';
+import { Seasons } from '../../utilities/seasonalData';
+import {
+  upperCaseFirstChar,
+  numberWithCommas,
+} from '../../utilities/helperFuncs';
 import { Link } from 'react-router-dom';
 
 const Product = ({
@@ -17,11 +24,16 @@ const Product = ({
 }: singleResult) => {
   const dispatch = useAppDispatch();
   const { setProduct } = bindActionCreators(inventoryActionCreator, dispatch);
+  const { heartedFavs } = useAppSelector((state: RootState) => state.layout);
+
+  // console.log(heartedFavs)
+
+  const toggleHeartFav = heartedFavs.includes(productName);
 
   return (
     <div className="flex items-center px-2 py-4 m-auto border-b-2 border-primary">
       <div className="flex w-2/12">
-        <FavoriteBtn />
+        <FavoriteBtn toggle={toggleHeartFav} product={productName} />
         <img
           className="w-1/3 m-auto"
           src={imageUrl}
@@ -83,7 +95,12 @@ const Product = ({
         </p>
       </div>
       <div className="flex items-center w-2/12 ">
-        <PierreButton text="Add to Cart" />
+        <AddToCartButton
+          text="Add to Cart"
+          productName={productName}
+          price={price}
+          imageUrl={imageUrl}
+        />
       </div>
     </div>
   );

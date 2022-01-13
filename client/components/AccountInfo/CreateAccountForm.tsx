@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { accountInfoType } from '../types/utilityTypes';
-import { addUser } from '../utilities/mutations';
+import { accountInfoType } from '../../types/utilityTypes';
+import { addUser } from '../../utilities/mutations';
 import axios from 'axios';
 
 const CreateAccountForm = () => {

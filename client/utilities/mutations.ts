@@ -19,3 +19,24 @@ export const addUser = (
         }
       }`;
 };
+
+export const addFavorite = (userId: number, productName: string): string => {
+  return `mutation addFavorite {
+        addFavorite(userId:${userId}, productName:"${productName}") {
+          success
+          errors
+          favorites { 
+          productName
+          }
+        }
+      }`;
+};
+
+export const removeFavorite = (userId: number, productName: string): string => {
+  return `mutation deleteFavorite {
+    deleteFavorite(userId:${userId}, productName:"${productName}") {
+      success
+      errors
+    }
+  }`;
+};

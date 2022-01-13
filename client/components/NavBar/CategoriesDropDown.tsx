@@ -1,7 +1,7 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import { bindActionCreators } from 'redux';
-import { layoutActionCreator } from '../redux/actionReferences';
-import { useAppDispatch } from '../types/reduxTypes';
+import { layoutActionCreator } from '../../redux/actionReferences';
+import { useAppDispatch } from '../../types/reduxTypes';
 import { Link } from 'react-router-dom';
 
 const CategoeriesDropDown = () => {
@@ -48,6 +48,25 @@ const CategoeriesDropDown = () => {
                 }}
               >
                 {el}
+              </Dropdown.Item>
+            );
+          } else if (el === 'Favorites') {
+            return (
+              <Dropdown.Item
+                className="py-0 m-auto text-greenTitle hover:text-white hover:bg-greenTitle"
+                key={`dropdownitem${el}${index}`}
+                as={Link}
+                to={`/${el.toLowerCase()}`}
+                onClick={() => {
+                  setCategory(el);
+                }}
+              >
+                {el}
+
+                <Dropdown.Divider
+                  className="py-0 m-auto"
+                  key={`divider${el}${index}`}
+                />
               </Dropdown.Item>
             );
           } else {

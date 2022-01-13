@@ -1,9 +1,8 @@
 from datetime import datetime
 import bcrypt
 from ariadne import convert_kwargs_to_snake_case
-
 from api import db
-from api.database.models import Products, Users
+from api.database.models import Products, Users, Favorites
 
 @convert_kwargs_to_snake_case
 def resolve_create_product(obj, info, product_name, image_url, price, information, season, category, quantity):
@@ -41,39 +40,14 @@ def resolve_delete_product(obj, info, product_id):
 
     return payload
 
-# @convert_kwargs_to_snake_case
-# def resolve_update_due_date(obj, info, todo_id, new_date):
-#     try:
-#         todo = Todo.query.get(todo_id)
-#         if todo:
-#             todo.due_date = datetime.strptime(new_date, '%d-%m-%Y').date()
-#         db.session.add(todo)
-#         db.session.commit()
-#         payload = {
-#             "success": True,
-#             "todo": todo.to_dict()
-#         }
-
-#     except ValueError:  # date format errors
-#         payload = {
-#             "success": False,
-#             "errors": ["Incorrect date format provided. Date should be in "
-#                        "the format dd-mm-yyyy"]
-#         }
-#     except AttributeError:  # todo not found
-#         payload = {
-#             "success": False,
-#             "errors": [f"Todo matching id {todo_id} not found"]
-#         }
-#     return payload
-
 @convert_kwargs_to_snake_case
 def resolve_create_user(obj, info, first_name, last_name, email_address, phone_number, password):
     try:
         byte_password = bytes(password, encoding= 'utf-8')
-        salt = bcrypt.gensalt(10)
+        salt = bcrypt.gensalt(12)
         pw_hash = bcrypt.hashpw(byte_password, salt)
-        user = Users(first_name=first_name, last_name=last_name, email_address=email_address, phone_number=phone_number, password=pw_hash)
+        decoded_pw = pw_hash.decode()
+        user = Users(first_name=first_name, last_name=last_name, email_address=email_address, phone_number=phone_number, password=decoded_pw)
         db.session.add(user)
         db.session.commit()
         payload = {
@@ -83,7 +57,50 @@ def resolve_create_user(obj, info, first_name, last_name, email_address, phone_n
     except ValueError:  # product format errors
         payload = {
             "success": False,
-            "errors": [f"Incorrectly added product.  Please try again."]
+            "errors": [f"Incorrectly added user.  Please try again."]
+        }
+
+    return payload
+
+@convert_kwargs_to_snake_case
+def resolve_add_favorite(obj, info, user_id, product_name):
+    try:
+        favorite = Favorites(
+            user_id=user_id, product_name=product_name
+        )
+        db.session.add(favorite)
+        db.session.commit()
+        payload = {
+            "success": True,
+            "favorite": favorite.to_dict()
+        }
+    except ValueError:  # product format errors
+        payload = {
+            "success": False,
+            "errors": [f"Incorrectly added favorite.  Please try again."]
+        }
+
+    return payload
+
+
+@convert_kwargs_to_snake_case
+def resolve_delete_favorite(obj, info, user_id, product_name):
+    try:
+        favorite_id = 1
+        favorites = [favorite.to_dict() for favorite in Favorites.query.all()]
+        for favorite_item in favorites:
+            if favorite_item['user_id'] == user_id and favorite_item['product_name'] == product_name:
+                favorite_id = favorite_item['favorite_id']
+                break
+        favorite = Favorites.query.get(favorite_id)
+        db.session.delete(favorite)
+        db.session.commit()
+        payload = {"success": True}
+
+    except AttributeError:
+        payload = {
+            "success": False,
+            "errors": [f"Favorite id of {favorite_id} not found"]
         }
 
     return payload

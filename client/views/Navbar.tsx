@@ -1,8 +1,8 @@
-import Searchbar from '../components/Searchbar';
+import Searchbar from '../components/NavBar/Searchbar';
 import { Link } from 'react-router-dom';
 import { seasonSetter } from '../utilities/seasonalData';
-import CategoeriesDropDown from '../components/CategoriesDropDown';
-import UserNav from '../components/UserNav';
+import CategoeriesDropDown from '../components/NavBar/CategoriesDropDown';
+import UserNav from '../components/NavBar/UserNav';
 
 const NavBar = () => {
   const season = seasonSetter();
@@ -29,7 +29,7 @@ const NavBar = () => {
       <div className="flex items-center align-middle ">
         <UserNav />
         <div className="w-32">
-          <Link to="/">
+          <Link to="/cart">
             <img
               src="https://pierresstore.s3.us-east-2.amazonaws.com/Traveling_Cart.png"
               alt="Shopping Cart Icon"

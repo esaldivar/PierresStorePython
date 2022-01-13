@@ -6,6 +6,11 @@ export interface accountInfoType {
   password: string;
 }
 
+export interface loginInfoType {
+  emailAddress: string;
+  password: string;
+}
+
 export interface categoryImages {
   [index: string]: string;
   cooking: string;
@@ -43,4 +48,28 @@ export interface seasonInfo {
 
 export interface seasonProp {
   currentSeason?: string;
+}
+
+export interface toggleFav {
+  toggle: boolean;
+  product: string;
+}
+
+export interface totalInterface {
+  total: number;
+}
+
+export interface cartItemProps {
+  props: {
+    productName: string;
+    price: string;
+    imageUrl: string;
+  };
+  key: string;
+}
+
+export interface productDetails {
+  quantity: number;
+  currentPrice: number;
+  priceChange: boolean;
 }

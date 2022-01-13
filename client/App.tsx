@@ -7,13 +7,15 @@ import NavBar from './views/Navbar';
 import SearchResult from './views/SearchResult';
 import InventoryHome from './views/InventoryHome';
 import Seasonal from './views/Seasonal';
-import SeasonalInfo from './components/SeasonalInfo';
+import SeasonalInfo from './components/SeasonalPage/SeasonalInfo';
 import ProductDetails from './views/ProductDetails';
-import ProductDetailsInfo from './components/ProductDetailsInfo';
+import ProductDetailsInfo from './components/ProductDetailsComponents/ProductDetailsInfo';
 import Categories from './views/Categories';
-import SpecificCategory from './components/SpecificCategory';
+import SpecificCategory from './components/Categories/SpecificCategory';
 import AccountCreation from './views/AccountCreation';
 import SignIn from './views/SignIn';
+import Favorites from './views/Favorites';
+import ShoppingCart from './views/ShoppingCart';
 
 export const App = () => {
   return (
@@ -25,6 +27,8 @@ export const App = () => {
             <Route index element={<InventoryHome />} />
             <Route path="/createaccount" element={<AccountCreation />} />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/cart" element={<ShoppingCart />} />
             <Route path="/productdetails" element={<ProductDetails />}>
               <Route path=":productName" element={<ProductDetailsInfo />} />
             </Route>

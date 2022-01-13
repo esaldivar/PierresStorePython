@@ -1,6 +1,6 @@
-import { useAppSelector, RootState } from '../types/reduxTypes';
-import { singleResult } from '../types/storeTypes';
-import ProductCard from './ProductCard';
+import { useAppSelector, RootState } from '../../types/reduxTypes';
+import { singleResult } from '../../types/storeTypes';
+import ProductCard from '../SearchDetails/ProductCard';
 
 const SpecificCategory = () => {
   const { currentCategory } = useAppSelector(

@@ -27,7 +27,7 @@ type ProductsResult {
 }
 
 type User {
-    id: ID!
+    userId: ID!
     firstName: String!
     lastName: String!
     phoneNumber: String!
@@ -47,14 +47,38 @@ type UsersResult {
     users: [User]
 }
 
+type Favorite {
+    favoriteId: ID!
+    userId: Int!
+    productName: String!
+}
+
+type FavoriteResult {
+    success: Boolean!
+    errors: [String]
+    favorite: Favorite
+}
+
+type FavoritesResult {
+    success: Boolean!
+    errors: [String]
+    favorites: [Favorite]
+}
+
 type Query {
     products: ProductsResult!
     product(productName: String): ProductResult!
     users: UsersResult!
-    user(emailAddress: String): UserResult!
+    user(emailAddress: String, password: String): UserResult!
+    favorites(userId: Int!): FavoritesResult!
 }
 
 type DeleteProductResult {
+    success: Boolean!
+    errors: [String]
+}
+
+type DeleteFavoriteResult {
     success: Boolean!
     errors: [String]
 }
@@ -63,4 +87,6 @@ type Mutation {
     createProduct(productName: String!, imageUrl: String!, price: Int!, information: String! , season: [String], category: [String]! , quantity: String!): ProductResult!
     deleteProduct(productId: ID!): DeleteProductResult!
     createUser(firstName: String!, lastName: String!, phoneNumber: String!, emailAddress: String!, password: String!): UserResult!
+    addFavorite(userId: Int!, productName: String!): FavoritesResult!
+    deleteFavorite(userId: Int!, productName: String!): DeleteFavoriteResult!
 }
